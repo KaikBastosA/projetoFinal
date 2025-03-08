@@ -1,0 +1,12 @@
+@import url('<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">');
+
+:root {
+  --primary-Font: 'Nunito Sans', sans-serif;
+}
+
+body {
+  font-family: var(--primary-Font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
