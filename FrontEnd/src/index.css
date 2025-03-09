@@ -2,12 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200..1000&family=Roboto:wght@100..900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Numans&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Numans&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Numans&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Numans&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playball&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 
 :root {
   --primary-Font: 'Nunito Sans', sans-serif;
   --secondary-Font: 'Roboto', sans-serif;
-  --terciary-Font: 
+  --terciary-Font: 'Numans', sans-serif;
+  --quaternary-Font: 'Montserrat', sans-serif;
+  --quinary-Font: 'Playball', sans-serif;
 }
 
 body {
