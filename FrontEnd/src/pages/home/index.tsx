@@ -1,7 +1,11 @@
+import styles from './styles.module.css';
+import logo from '../../assets/logocTitulo.svg'
+
 export default function Home(){
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <section className={styles.main}>
+            <img src={logo} alt="Pijam{IN}ha-logo" />
+            <h1>Se os lobos soubessem desse conforto, nem sopravam casas, iam dormir!</h1>
+        </section>
     )
 }
