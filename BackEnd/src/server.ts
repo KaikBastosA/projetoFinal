@@ -7,5 +7,5 @@ app.listen({
     host :'0.0.0.0',
     port: env.PORT
 }).then( () =>{
-    console.log("Servidor estác rodando na porta : 3333")
+    console.log("Servidor está rodando na porta : 3333")
 })
