@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify"
-import { PrismaFeedbacksRepository } from "src/repositories/prisma/prisma-feedbacks-repostiroy";
+import { PrismaFeedbacksRepository } from "src/repositories/prisma/prisma-feedbacks-repostory";
 import { DeleteFeedbackUseCase } from "src/use-cases/feedbacks/delete-feedback-use-case";
 import { z } from "zod"
 
