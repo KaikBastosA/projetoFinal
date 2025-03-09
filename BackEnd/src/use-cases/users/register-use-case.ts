@@ -5,7 +5,7 @@ import { UsernameAlreadyExistsError } from "../errors/username-already-exists-er
 
 interface RegisterUseCaseRequest {
     name: string
-    userName: string
+    username: string
     email: string
     password: string
 }
@@ -14,9 +14,9 @@ export class RegisterUseCase {
     constructor(private usersRepository: UsersRepository) {}
 
     async execute(data: RegisterUseCaseRequest) {
-        const userNameAlreadyExists = await this.usersRepository.findByUsername(data.userName)
+        const usernameAlreadyExists = await this.usersRepository.findByUsername(data.username)
 
-        if (userNameAlreadyExists) {
+        if (usernameAlreadyExists) {
             throw new UsernameAlreadyExistsError()
         }
 
@@ -30,7 +30,7 @@ export class RegisterUseCase {
 
         await this.usersRepository.create({
             name: data.name,
-            userName: data.userName,
+            username: data.username,
             email: data.email,
             password: password_hash
         })
