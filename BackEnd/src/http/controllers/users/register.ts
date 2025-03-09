@@ -7,17 +7,17 @@ import { z } from "zod";
 export async function register(request: FastifyRequest, reply: FastifyReply) {
     const registerBodySchema = z.object({
         name: z.string(),
-        userName: z.string(),
+        username: z.string(),
         email: z.string().email(),
         password: z.string().min(6)
     })
 
-    const { name, userName, email, password } = registerBodySchema.parse(request.body)
+    const { name, username, email, password } = registerBodySchema.parse(request.body)
 
     try {
         const prismaUsersRepository = new PrismaUsersRepository()
         const registerUseCase = new RegisterUseCase(prismaUsersRepository)
-        await registerUseCase.execute({ name, userName, email, password })
+        await registerUseCase.execute({ name, username, email, password })
     } catch (err) {
         if (err instanceof UserAlreadyExistsError) {
             reply.status(409).send({ message: err.message })

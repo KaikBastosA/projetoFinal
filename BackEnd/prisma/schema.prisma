@@ -49,7 +49,6 @@ model Sale_Pajamas {
   @@unique([saleId, pajamasId])
   
   @@map("sales_pajamas")
-
 }
 
 model Sale {
@@ -65,9 +64,8 @@ model Sale {
   Address   Address @relation(fields: [addressId], references: [id])
 
   Pajmas Sale_Pajamas[]
+
   @@map("sale")
-
-
 }
 
 model PajamaSize {
@@ -77,8 +75,8 @@ model PajamaSize {
 
   Pajama   Pajama @relation(fields: [pajamaId], references: [id] , onDelete: Cascade )
   pajamaId String
-  @@map("pajama_size")
 
+  @@map("pajama_size")
 }
 
 model Pajama {
@@ -106,5 +104,6 @@ model FeedBack {
   name        String
   description String
   rating      Float
+  
   @@map("feedback")
 }
