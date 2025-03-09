@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { FeedBack, Prisma } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
 
 export class PrismaFeedbacksRepository {
@@ -25,5 +25,9 @@ export class PrismaFeedbacksRepository {
             }
         })
         return feedback 
+    }
+    async findAll(): Promise<FeedBack[]> {
+        const feedbacks = await prisma.feedBack.findMany()
+        return feedbacks
     }
 }
