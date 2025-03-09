@@ -75,7 +75,7 @@ model PajamaSize {
   stock_quantity Int
   size           String
 
-  Pajama   Pajama @relation(fields: [pajamaId], references: [id])
+  Pajama   Pajama @relation(fields: [pajamaId], references: [id] , onDelete: Cascade )
   pajamaId String
   @@map("pajama_size")
 
