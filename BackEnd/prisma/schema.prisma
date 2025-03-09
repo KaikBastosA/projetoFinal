@@ -29,7 +29,7 @@ model Address {
   state        String
   city         String
   neighborhood String
-  address      String
+  adres      String
   number       String
   sales        Sale[]
 
