@@ -9,4 +9,21 @@ export class PrismaFeedbacksRepository {
         
         return feedback;
     }
+    async delete(id: string){
+        const feedback = await prisma.feedBack.delete({
+            where: {
+                id
+            }
+        })
+        
+        return feedback;
+    }
+    async findById(id: string){
+        const feedback = await prisma.feedBack.findUnique({
+            where: {
+                id
+            }
+        })
+        return feedback 
+    }
 }
