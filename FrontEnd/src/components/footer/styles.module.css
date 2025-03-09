@@ -1,0 +1,58 @@
+/* Estilização Global do Footer */
+.footer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footerContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background-image: url('../../assets/logoGray.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 13.75rem 14rem;
+    background-color: #FCF7F8;
+}
+
+.footerBottom{
+    display: flex;
+    justify-content: center;
+    background-color: #3E677A;
+    color: #97C3D8;
+}
+
+/*Estilização dos componentes do Footer */
+.footerContent h1{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #4E8098;
+    margin: 1.5rem 0 1rem 0;
+}
+
+.footerContent p{
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #274553;
+    line-height: 0.5rem;
+    letter-spacing: 5%;
+    margin: 0 0 1.2rem 0;
+}
+
+.socialIcons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 6rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.map{
+    box-shadow: 0 10px 0.5rem 0.1rem rgba(0, 0, 0, 0.15);
+}
