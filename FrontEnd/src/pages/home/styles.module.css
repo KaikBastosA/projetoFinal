@@ -8,11 +8,19 @@
     background: url('../../assets/zzz-background.svg') no-repeat center;
     background-size: cover;
     background-color: #72A8C1;
+    padding-bottom: 5rem;
 }
 
 .main img {
     width: 350px;
     height: 350px;
-    fill: #274553;
-    stroke: #274553;
+}
+
+.main h1{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #274553;
+    width: 40%;
+    text-align: center;
 }
