@@ -26,4 +26,26 @@ export class PrismaAdressRepository implements AdressRepository  {
         return address; 
     }
 
+
+    async update(id: string, data: Prisma.AddressUpdateInput) : Promise<Address | null>  {
+        const address = await prisma.address.update({
+            where: {
+                id
+            },
+            data 
+            
+        })
+        return address; 
+    }
+
+
+    async findById(id: string) : Promise<Address | null>  {
+        const adress = await prisma.address.findUnique({
+            where: {
+                id 
+            }
+        })
+        return adress; 
+    }
+
 }

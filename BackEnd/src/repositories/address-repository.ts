@@ -13,9 +13,9 @@ export interface AdressUpdateInput {
 export interface AdressRepository {
     create(data: Prisma.AddressCreateInput): Promise<Address | null>
     delete(id: string ) : Promise< Address | null >
-    //findById(id: string)
+    findById(id: string) : Promise<Address | null> 
     getAll(): Promise<Address[] | null >
-    //update(id: string, data: UserUpdateInput): Promise<User | null>
+    update(id: string, data: AdressUpdateInput  ): Promise<Address | null> 
 
     
 }
