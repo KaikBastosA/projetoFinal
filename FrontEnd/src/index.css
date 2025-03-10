@@ -24,3 +24,11 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+input {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 2px;
+  border: none;
+
+}
