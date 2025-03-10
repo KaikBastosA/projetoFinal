@@ -1,0 +1,28 @@
+
+
+.backGround{
+    background-image: url('../../assets/backGround.png');
+    background-size: cover;
+    height: 100vh;
+    background-position: 0px -180px;
+}
+
+@media only screen and (max-width: 800px) {
+    
+    .backGround{
+        background-image: url('../../assets/backGround.png');
+        background-size: cover;
+        height: 150vh;
+        background-position: -400px;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    
+    .backGround{
+        background-image: url('../../assets/backGround.png');
+        background-size: cover;
+        height: 300vh;
+        background-position: -700px 0px;
+    }
+}
