@@ -16,7 +16,7 @@ export async function deleteFeedback(request: FastifyRequest,reply: FastifyReply
 
         const feedback = await prismaFeedbacksRepository.findById(feedbackId);
         if (!feedback) {
-            return reply.status(404).send({ message: "Comentário não encontrado" });
+            return reply.status(404).send({ message: "Feedback not found" });
         }
         await deleteFeedbackUseCase.execute({ feedbackId });
 
