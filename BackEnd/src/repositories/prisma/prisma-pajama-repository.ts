@@ -18,7 +18,7 @@ export class PrismaPajamaRepository {
         })
         
         
-        /*
+        /* código de update do pajama
         const pismaSize = await prisma.pajamaSize.findFirst({
             where : {
                 pajamaId : pajama.id,
@@ -41,4 +41,11 @@ export class PrismaPajamaRepository {
         return pajama; 
     }
     
+    async getAll() : Promise< Pajama[] | null> {
+        const pajamas = await prisma.pajama.findMany()
+        return pajamas;
+    }
+
+
+
 }
