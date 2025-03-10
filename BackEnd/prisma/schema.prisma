@@ -76,6 +76,8 @@ model PajamaSize {
   Pajama   Pajama @relation(fields: [pajamaId], references: [id] , onDelete: Cascade )
   pajamaId String
 
+  @@unique([pajamaId , size])
+
   @@map("pajama_size")
 }
 
