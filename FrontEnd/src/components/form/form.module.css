@@ -1,0 +1,28 @@
+
+.main_div{
+    position: relative;
+    top: 5vw;
+    left: 35vw;
+    display: flex;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    background-color: #74010B;
+    border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 800px) {
+    
+    .main_div{
+        position: relative;
+        top: 5vw;
+        left: 20vw;
+        display: flex;
+        width: 70%;
+        align-items: center;
+        justify-content: center;
+        background-color: #74010B;
+        border-radius: 5px;
+    }
+}

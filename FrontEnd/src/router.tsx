@@ -1,12 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "./layout";
+import MainLayout from "./layouts/mainLayout/layout.tsx";
 import Infantil from "./pages/infantil";
 import Home from "./pages/home";
+import Individual from './pages/pijamaIndividual'
+import Login from './pages/login/login.tsx'
+import FeedBack from "./pages/feedBack/feedBack.tsx";
+import RegLayout from './layouts/regsLayout/regsLayout.tsx'
+import Cadastro from './pages/cadastro/cadastro.tsx'
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout/>,
+        element: <MainLayout/>,
         children: [
             {
                 index: true,
@@ -15,6 +20,28 @@ const router = createBrowserRouter([
             {
                 path: 'infantil',
                 element: <Infantil/>
+            },
+            {
+                path: 'pijama',
+                element: <Individual/>
+            },
+            {
+                path: 'reg',
+                element: <RegLayout></RegLayout>,
+                children: [
+                    {
+                        path: 'cadastro',
+                        element: <Cadastro></Cadastro>
+                    },
+                    {
+                        path: 'feedback',
+                        element: <FeedBack></FeedBack>
+                    },
+                    {
+                        path: 'login',
+                        element: <Login></Login>
+                    }
+                ]
             }
         ]
     },

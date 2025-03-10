@@ -1,0 +1,53 @@
+.title{
+    color: white;
+    font-weight: 400;
+    margin-left: 15px;
+}
+
+
+.main_div{
+    position: relative;
+    top: 5vw;
+    left: 35vw;
+    display: flex;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    background-color: #74010B;
+    border-radius: 5px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reg_btn{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: none;
+    color: white;
+    background-color: #A31621;
+    border-radius: 10px;
+    padding: 4px 16px 4px 16px;
+    font-weight: 500;
+    font-size: 24px;
+    box-shadow: 0 5px 6px #00000040;
+}
+
+
+@media only screen and (max-width: 800px) {
+    
+    .main_div{
+        position: relative;
+        top: 5vw;
+        left: 20vw;
+        display: flex;
+        width: 70%;
+        align-items: center;
+        justify-content: center;
+        background-color: #74010B;
+        border-radius: 5px;
+    }
+}
