@@ -25,7 +25,7 @@ export default function Header() {
                     <Link to="/carrinho"><img src={cart} alt="cart-icon" /></Link>
                     <Link to="/favoritos"><img src={heart} alt="favorite-icon" /></Link>
                 </div>
-                <Link to="/login" className={styles.userContainer}>
+                <Link to="reg/login" className={styles.userContainer}>
                     <img src={user} alt="user-icon" />
                 </Link>
             </div>

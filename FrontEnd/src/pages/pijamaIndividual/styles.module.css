@@ -1,0 +1,232 @@
+.individual {
+    display: flex;
+    flex-direction: column;
+    background-image: url("../../assets/background-pijama.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.buyPijama {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    padding: 3rem;
+    margin: 2rem 5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.buyPijama > img {
+    width: 554px;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 16px 16px 16px 0px #00000040;
+}
+
+.buyContainer {
+    width: 100%;
+    padding: 1rem;
+}
+
+.buyContainer > h1 {
+    font-weight: 400;
+    font-size: 3rem;
+    font-family: var(--terciary-Font);
+    color: #274553;
+}
+
+.buyContainer > p {
+    font-family: var(--terciary-Font);
+    font-weight: 400;
+    font-size: .875rem;
+    color: #4E8098;
+    margin-top: .5rem;
+}
+
+.priceContainer {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price > h2 {
+    font-weight: 700;
+    font-size: 4rem;
+    font-family: var(--primary-Font);
+}
+
+.price > p, .priceContainer > p{
+    font-family: var(--primary-Font);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #5F6165;
+    margin-top: auto;
+}
+
+.priceSpan {
+    font-weight: 700;
+}
+
+.priceContainerSpan {
+    font-weight: 700;
+    font-style: italic;
+}
+
+.tamanhosContainer {
+    width: 302px;
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 0;
+}
+
+.tamanhosContainer > h4 {
+    font-family: var(--terciary-Font);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #171717;
+    margin-bottom: 1rem;
+}
+
+.tamanhosBotoes {
+    display: flex;
+    gap: .8rem;
+}
+
+.tamanhosBotoes > button {
+    background-color: #4E8098;
+    width: 50px;
+    height: 51.5px;
+    border-radius: 1.5px;
+    border: none;
+    margin-bottom: 1rem;
+
+    font-family: var(--terciary-Font);
+    font-weight: 400;
+    font-size: 1.25rem;
+    text-align: center;
+    color: #FCF7F8;
+
+    &:hover {
+        background-color: #97C3D8;
+        color: #3E677A;
+    }
+}
+
+.tamanhosContainer > p {
+    font-family: var(--primary-Font);
+    font-weight: 300;
+    font-size: .875rem;
+    color: #171717;
+    width: 14.9375rem;
+}
+
+.tamanhosContainerSpan {
+    font-weight: 800;
+    font-style: italic;
+}
+
+.quantidadeContainer {
+    width: 10.6875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.quantidadeContainer > h4 {
+    font-family: var(--primary-Font);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.quantidadeBotoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #FCF7F8;
+    border: 1px solid #565656;
+    border-radius: 2px;
+}
+
+.quantidadeBotoes > button {
+    width: 100%;
+    border: none;
+    background-color: #FCF7F8;
+    height: 2.5625rem;
+
+    font-family: var(--primary-Font);
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #000000;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.quantidadeBotoes > button > img {
+    width: 20px;
+    height: 21px;
+}
+
+.quantidadeBotoes span {
+    font-family: var(--primary-Font);
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.diminuirBotao {
+    justify-content: flex-start;
+    margin: 0 1rem;
+}
+.aumentarBotao {
+    justify-content: flex-end;
+    margin: 0 1rem;
+}
+
+.carrinhoContainer {
+    display: flex;
+    gap: .8rem;
+    align-items: center;
+}
+
+.addCarrinhoBotao {
+    width: 27rem;
+    height: 85px;
+    border: none;
+    border-radius: 4px;
+    background-color: #72A8C1;
+    cursor: pointer;
+
+    font-family: var(--primary-Font);
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #FCF7F8;
+}
+
+.favoritosBotao {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.favoritosBotao > img {
+    width: 86px;
+    height: 90px;
+}
