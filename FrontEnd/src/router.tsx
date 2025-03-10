@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layout";
 import Infantil from "./pages/infantil";
 import Home from "./pages/home";
+import Individual from './pages/pijamaIndividual'
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
             {
                 path: 'infantil',
                 element: <Infantil/>
+            },
+            {
+                path: 'pijama',
+                element: <Individual/>
             }
         ]
     },
