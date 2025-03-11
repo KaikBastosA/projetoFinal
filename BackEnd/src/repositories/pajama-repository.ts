@@ -10,5 +10,8 @@ export interface  PajamaRepository {
     delete(id: string): Promise<Pajama | null>
     getAll(): Promise<Pajama[] | null>
     getByid( id : string ) : Promise<Pajama | null>
-    update( id : string , data : UpdatePajamaInput ) : Promise<Pajama | null>
+    update(id: string, data: UpdatePajamaInput): Promise<Pajama | null>
+
+    findManyFavorite(): Promise<Pajama[] | null>
+    
 }
