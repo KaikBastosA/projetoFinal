@@ -29,9 +29,9 @@ model Address {
   state        String
   city         String
   neighborhood String
-  adres      String
+  address      String
   number       String
-  sales        Sale[]
+  sales        Sale ? 
 
   @@map("address")
 }
@@ -60,7 +60,7 @@ model Sale {
   installments   Int     @default(1)
   card_number    String?
 
-  addressId String
+  addressId String @unique
   Address   Address @relation(fields: [addressId], references: [id])
 
   Pajmas Sale_Pajamas[]
