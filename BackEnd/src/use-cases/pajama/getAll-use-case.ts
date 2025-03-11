@@ -4,7 +4,7 @@ import { PrismaPajamaRepository } from "src/repositories/prisma/prisma-pajama-re
 import { ResourceNotFoundError } from "../errors/resource-not-found-error"
 
 
-interface GetAllPajamaUseCaseResponse {
+export interface GetAllPajamaUseCaseResponse {
     pajamas : Pajama[] 
 }
 

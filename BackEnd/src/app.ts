@@ -6,6 +6,7 @@ import { pajamaRoutes } from "./http/controllers/pajama/routes";
 import fastifyJwt from "@fastify/jwt";
 import fastifyCors from "@fastify/cors";
 import { env } from "./env";
+import { sizesRoutes } from "./http/controllers/pajamaSize/routes";
 
 
 export const app = fastify()
@@ -24,5 +25,6 @@ app.register(fastifyJwt , {
 app.register(feedbacksRoutes)
 app.register(userRoutes)
 app.register(pajamaRoutes)
+app.register(sizesRoutes)
 
 

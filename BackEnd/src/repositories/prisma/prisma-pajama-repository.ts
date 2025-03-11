@@ -42,10 +42,19 @@ export class PrismaPajamaRepository {
     }
     
     async getAll() : Promise< Pajama[] | null> {
-        const pajamas = await prisma.pajama.findMany()
+        const pajamas = await prisma.pajama.findMany( )
         return pajamas;
     }
 
+    async getById(id: string): Promise<Pajama | null>{
+        const pajama = await prisma.pajama.findUnique({
+            where: {
+                id
+            },
+             include: { size: true } 
+        })
+        return pajama; 
+    }
 
 
 }
