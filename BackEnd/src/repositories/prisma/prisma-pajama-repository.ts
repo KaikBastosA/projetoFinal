@@ -1,7 +1,8 @@
 import { FeedBack, Pajama, Prisma } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
+import { PajamaRepository, UpdatePajamaInput } from "../pajama-repository";
 
-export class PrismaPajamaRepository {
+export class PrismaPajamaRepository  {
     async create(data: Prisma.PajamaCreateInput ) : Promise<Pajama | null > {
         const pajama = await prisma.pajama.create({
             data
@@ -56,5 +57,18 @@ export class PrismaPajamaRepository {
         return pajama; 
     }
 
+
+
+    async update(id: string , data : Prisma.PajamaUpdateInput ): Promise<Pajama | null> {
+        const pajama = await prisma.pajama.update({
+            where: {
+                id
+            },
+            data
+        })
+        
+        return pajama
+
+    }
 
 }
