@@ -67,3 +67,12 @@
 .cadastrar_link{
     color: white;
 }
+
+.errorMessage {
+    color: white;
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: inline-block;
+  }
