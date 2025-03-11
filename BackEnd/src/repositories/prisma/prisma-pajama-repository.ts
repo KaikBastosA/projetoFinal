@@ -1,7 +1,8 @@
 import { FeedBack, Pajama, Prisma } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
+import { PajamaRepository, UpdatePajamaInput } from "../pajama-repository";
 
-export class PrismaPajamaRepository {
+export class PrismaPajamaRepository  {
     async create(data: Prisma.PajamaCreateInput ) : Promise<Pajama | null > {
         const pajama = await prisma.pajama.create({
             data
@@ -17,17 +18,7 @@ export class PrismaPajamaRepository {
             ]
         })
         
-        
-        /* código de update do pajama
-        const pismaSize = await prisma.pajamaSize.findFirst({
-            where : {
-                pajamaId : pajama.id,
-                size : "P"
-            }
-        })
-        */
-        
-        
+          
         return pajama; 
         
     }
@@ -55,6 +46,32 @@ export class PrismaPajamaRepository {
         })
         return pajama; 
     }
+
+
+
+    async update(id: string , data : Prisma.PajamaUpdateInput ): Promise<Pajama | null> {
+        const pajama = await prisma.pajama.update({
+            where: {
+                id
+            },
+            data
+        })
+        
+        return pajama
+
+    }
+
+    async findManyFavorite(): Promise<Pajama[] | null> {
+        const pajamas = await prisma.pajama.findMany({
+            where: {
+                favorite : true
+            }
+        })
+
+        return pajamas; 
+
+    }
+
 
 
 }

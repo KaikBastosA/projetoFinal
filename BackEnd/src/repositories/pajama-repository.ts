@@ -1,9 +1,7 @@
 import { FeedBack, Pajama, Prisma } from "@prisma/client";
 
-interface UpdatePajamaRepositoryUser{
-    favorite?: string
-    on_sale?: boolean
-
+export interface UpdatePajamaInput{
+    favorite    ?: boolean
 }
 
 
@@ -12,5 +10,8 @@ export interface  PajamaRepository {
     delete(id: string): Promise<Pajama | null>
     getAll(): Promise<Pajama[] | null>
     getByid( id : string ) : Promise<Pajama | null>
+    update(id: string, data: UpdatePajamaInput): Promise<Pajama | null>
+
+    findManyFavorite(): Promise<Pajama[] | null>
     
 }

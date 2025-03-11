@@ -32,10 +32,18 @@ body {
   box-sizing: border-box;
 }
 
-input {
+input, textarea {
   padding: 10px;
   margin: 5px;
   border-radius: 2px;
   border: none;
+  width: 20vw;
+}
 
+textarea::placeholder{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button{
+  cursor: pointer;
 }

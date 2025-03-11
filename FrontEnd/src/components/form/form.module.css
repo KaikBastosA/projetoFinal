@@ -9,6 +9,16 @@
     justify-content: center;
     background-color: #74010B;
     border-radius: 5px;
+    height: 70vh;
+}
+
+.sub_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 70vh;
+    
 }
 
 
@@ -24,5 +34,6 @@
         justify-content: center;
         background-color: #74010B;
         border-radius: 5px;
+        height: 70vh;
     }
 }
