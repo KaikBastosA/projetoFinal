@@ -36,6 +36,9 @@ export default function Home() {
                     <h2>Nossas últimas promoções!</h2>
                     
                 </section>
+                <section className={styles.feedbacks}>
+                    <h2>Feedbacks</h2>
+                </section>
             </section>
         </>
     )
