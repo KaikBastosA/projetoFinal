@@ -1,10 +1,17 @@
 /* Estilização do container */
 
+:global(.swiper-slide) {
+  display: flex !important;
+  
+}
+
+
 .swiperSlide {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 0;
   }
   
   .swiperSlide img {
