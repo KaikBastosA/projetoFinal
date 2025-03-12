@@ -6,6 +6,8 @@ import '/node_modules/swiper/swiper-bundle.min.css';
 import { Navigation, Autoplay } from 'swiper/modules';
 import styles from './styles.module.css';
 import star from '../../assets/full-star.svg';
+import halfStar from '../../assets/half-star.svg';
+import emptyStar from '../../assets/Empty-Star.svg';
 
 interface Feedback {
     id: string;
@@ -61,15 +63,27 @@ interface FeedbackCardProps {
 }
 
 function FeedbackCard({ feedback }: FeedbackCardProps) {
+    const renderStars = (rating: number) => {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+
+        return (
+            <>
+                {Array.from({ length: fullStars }).map((_, index) => (
+                    <img key={index} src={star} alt="star" />
+                ))}
+                {hasHalfStar && <img src={halfStar} alt="half-star" />}
+                {fullStars < 5 && !hasHalfStar && <img src={emptyStar} alt="empty-star" />}
+            </>
+        );
+    };
+
     return (
         <div className={styles.feedbackCardContainer}>
         <div className={styles.feedbackCard}>
             <h3>{feedback.name}</h3>
             <div className={styles.stars}>
-                {Array.from({ length: Math.floor(feedback.rating) }).map((_, index) => (
-                    <img key={index} src={star} alt="star" />
-                ))}
-                {feedback.rating % 1 ? <img src={star} alt="half-star" /> : null}
+                {renderStars(feedback.rating)}
             </div>
             <p>{feedback.description}</p>
         </div>
