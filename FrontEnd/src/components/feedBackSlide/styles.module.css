@@ -1,8 +1,9 @@
+/* Estilização do container de feedbacks */
 .feedbackCardContainer{
     margin: 0 auto;
     padding: 0;
 }
-
+/* Estilização do conteúdo dos cards */
 .feedbackCard {
     display: flex;
     flex-direction: column;
@@ -34,9 +35,10 @@
     margin-top: 0.5rem;
     text-align: center;
     margin: 0;
-    padding: 0;
+    padding: 0.5rem;
+    overflow-y: auto;
 }
-
+/*Estilização das estreças*/
 .stars {
     display: flex;
     justify-content: center;
@@ -47,4 +49,25 @@
 .stars img {
     width: 2.5rem;
     height: auto;
+}
+
+/* Estilização da barra de rolagem */
+
+:global(::-webkit-scrollbar) {
+    width: 5px; 
+    height: 5px;
+}
+
+:global(::-webkit-scrollbar-track) {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+:global(::-webkit-scrollbar-thumb) {
+    background: #888;
+    border-radius: 10px;
+}
+
+:global(::-webkit-scrollbar-thumb:hover) {
+    background: #A31621;
 }
