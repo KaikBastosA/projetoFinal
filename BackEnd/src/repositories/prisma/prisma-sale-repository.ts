@@ -13,5 +13,14 @@ export class PrismaSaleRepository implements  PajamaSalesRepository {
         })
         return sale; 
     }
+
+    async get(id: string): Promise<Sale | null> {
+        const sale = await prisma.sale.findUnique({
+            where: {
+                id
+            }
+        })
+        return sale
+    }
      
 }
