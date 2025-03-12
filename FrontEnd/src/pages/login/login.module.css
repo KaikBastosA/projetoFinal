@@ -76,3 +76,18 @@
     margin-top: 5px;
     display: inline-block;
   }
+  
+  .entrar_btn_dis,  .cadastrar_btn_dis{
+
+    color: white;
+    background-color: #e67982;
+    padding: 4px 16px 4px 16px;
+    font-weight: 500;
+    font-size: 24px;
+    box-shadow: 0 5px 6px #00000040;
+    border: none;
+    border-radius: 10px;
+    font-family: var(--quaternary-Font);
+    cursor: none;
+    
+  }
