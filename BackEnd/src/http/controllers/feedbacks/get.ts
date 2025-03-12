@@ -15,11 +15,11 @@ export async function get(request: FastifyRequest,reply: FastifyReply) {
         const prismaFeedbacksRepository = new PrismaFeedbacksRepository()
         const getFeedbackUseCase = new GetFeedbackUseCase(prismaFeedbacksRepository)
 
-        const feedback = await getFeedbackUseCase.execute({
+        const {feedback} = await getFeedbackUseCase.execute({
             feedbackId    
         })
 
-        return reply.status(200).send({ feedback })
+        return reply.status(200).send(feedback)
 
     } catch (err) {
         if (err instanceof ResourceNotFoundError){
