@@ -7,13 +7,14 @@ import closeIcon from '../../assets/Plus Math.svg'
 
 interface CarrinhoCardProps {
     pijama: {
-        id: number;
+        id: string;
         name: string;
         image: string;
         price: number;
-        onSale: boolean;
+        onSale?: boolean;
         salePercent?: number;
         quantidade: number;
+        selectedSize: string;
     }
 }
 
@@ -52,6 +53,8 @@ export default function CarrinhoCard( { pijama }: CarrinhoCardProps) {
             </div>
 
             <p>R$ {precoFinal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+
+            <p>Tamanho: {pijama.selectedSize}</p>
                 
                 {/* Controles de quantidade */}
                 <div className={styles.quantidadeContainer}>
