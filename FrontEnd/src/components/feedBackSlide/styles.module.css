@@ -1,0 +1,73 @@
+/* Estilização do container de feedbacks */
+.feedbackCardContainer{
+    margin: 0 auto;
+    padding: 0;
+}
+/* Estilização do conteúdo dos cards */
+.feedbackCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    height: 25rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 1rem rgba(0, 0, 0, 0.2);
+    margin: 3rem 0;
+    gap: 2.2rem;
+}
+
+.feedbackCard h3 {
+    font-family: 'Numans', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 5%;
+    text-align: center;
+}
+
+.feedbackCard p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 0.5rem;
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem;
+    overflow-y: auto;
+}
+/*Estilização das estreças*/
+.stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stars img {
+    width: 2.5rem;
+    height: auto;
+}
+
+/* Estilização da barra de rolagem */
+
+:global(::-webkit-scrollbar) {
+    width: 5px; 
+    height: 5px;
+}
+
+:global(::-webkit-scrollbar-track) {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+:global(::-webkit-scrollbar-thumb) {
+    background: #888;
+    border-radius: 10px;
+}
+
+:global(::-webkit-scrollbar-thumb:hover) {
+    background: #A31621;
+}

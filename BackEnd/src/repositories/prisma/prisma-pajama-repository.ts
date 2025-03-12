@@ -75,6 +75,16 @@ export class PrismaPajamaRepository  {
         return pajamas; 
 
     }
+    async findManyOnSale(): Promise<Pajama[]> {
+        const pajamas = await prisma.pajama.findMany({
+            where: {
+                on_sale : true
+            }
+        })
+
+        return pajamas; 
+
+    }
 
 
 

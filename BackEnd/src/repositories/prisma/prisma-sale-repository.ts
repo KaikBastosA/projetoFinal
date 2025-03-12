@@ -27,7 +27,8 @@ export class PrismaSaleRepository implements  PajamaSalesRepository {
         const sale = await prisma.sale.findUnique({
             where: {
                 id
-            }
+            },
+            include: {Address : true }
         })
         return sale
     }

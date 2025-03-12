@@ -36,5 +36,14 @@ export class PrismaSale_PajamaRepository implements  Sale_PajamaRepository {
         return salePajama; 
 
     }
+    async listBySale(saleId: string): Promise<Sale_Pajamas[]> {
+        const quant = await prisma.sale_Pajamas.findMany({
+            where: {
+                saleId
+            }
+        })
+        return quant
+    }
+
      
 }
