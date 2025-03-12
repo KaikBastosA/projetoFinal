@@ -1,10 +1,10 @@
-h1{
+h1 {
     margin: 0;
 }
 
 /* Estilização do banner principal */
 
-.mainBanner{
+.mainBanner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@ h1{
     height: 37.5rem;
 }
 
-.banner{
+.banner {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,12 +23,12 @@ h1{
 }
 
 
-.mainBanner .banner img{
+.mainBanner .banner img {
     width: 21.6rem;
     height: auto;
 }
 
-.mainBanner .banner h1{
+.mainBanner .banner h1 {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 2.5rem;
     font-weight: 400;
@@ -41,35 +41,36 @@ h1{
 }
 
 /* Estilização dos pontos positivos */
-.mainSiteContent{
+.mainSiteContent {
     display: flex;
     flex-direction: column;
-    background: url('../../assets//zzz-blue-background.svg');
-    
+    background: url('../../assets//zzz-blue-background.svg') no-repeat center;
+    background-size: cover;
+
 }
 
-.positives{
+.positives {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 5rem;
     margin: 5rem auto;
 }
 
-.positivesContent{
+.positivesContent {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
 }
 
-.positivesContent img{
+.positivesContent img {
     width: 9.375rem;
     height: auto;
 }
 
-.positivesContent h2{
+.positivesContent h2 {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 2rem;
     font-weight: 600;
@@ -80,4 +81,12 @@ h1{
     padding: 0;
     margin: 0;
     color: #171717;
+}
+
+.promos h2,
+.feedbacks h2{
+    font-family: "Numans", sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #74010B;
 }
