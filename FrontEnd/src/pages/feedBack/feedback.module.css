@@ -14,7 +14,7 @@
     width: 10vw;
 }
 
-.star{
+.star1, .star2, .star3, .star4, .star5{
     width: 50px;
     margin: 30px 0px 30px 0px; /*topo direita inferior esquerda*/
 }
