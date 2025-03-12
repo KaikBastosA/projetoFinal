@@ -43,7 +43,7 @@ model Sale_Pajamas {
 
   saleId    String
   pajamasId String
-  sale      Sale   @relation(fields: [saleId], references: [id])
+  sale      Sale   @relation(fields: [saleId], references: [id], onDelete: Cascade)
   pajamas   Pajama @relation(fields: [pajamasId], references: [id])
 
   @@unique([saleId, pajamasId])

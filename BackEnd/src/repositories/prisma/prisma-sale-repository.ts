@@ -10,7 +10,7 @@ export class PrismaSaleRepository implements  PajamaSalesRepository {
     async delete(id: string): Promise<Sale | null> {
         const sale = await prisma.sale.delete({
             where: {
-                id
+                id: id
             }
         })
         return sale
