@@ -7,6 +7,7 @@ import Login from './pages/login/login.tsx'
 import FeedBack from "./pages/feedBack/feedBack.tsx";
 import RegLayout from './layouts/regsLayout/regsLayout.tsx'
 import Cadastro from './pages/cadastro/cadastro.tsx'
+import Carrinho from "./pages/carrinho";
 
 const router = createBrowserRouter([
     {
@@ -22,8 +23,12 @@ const router = createBrowserRouter([
                 element: <Infantil/>
             },
             {
-                path: 'pijama',
+                path: 'pijama/:id',
                 element: <Individual/>
+            },
+            {
+                path: 'carrinho',
+                element: <Carrinho/>
             },
             {
                 path: 'reg',
