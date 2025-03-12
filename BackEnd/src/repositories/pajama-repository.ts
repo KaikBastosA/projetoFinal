@@ -14,5 +14,6 @@ export interface  PajamaRepository {
     update(id: string, data: UpdatePajamaInput): Promise<Pajama | null>
 
     findManyFavorite(): Promise<Pajama[] | null>
-    
+    findManyOnsale(): Promise<Pajama[]>
+
 }
