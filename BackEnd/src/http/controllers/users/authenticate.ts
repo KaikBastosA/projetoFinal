@@ -5,17 +5,18 @@ import { z } from "zod";
 
 export async function authenticate(request: FastifyRequest, reply: FastifyReply) {
     const autheticateBodySchema = z.object({
-        email: z.string().email(),
+        email: z.string().email().optional(),
+        username: z.string().optional(),
         password: z.string().min(6)
     })
 
-    const { email, password } = autheticateBodySchema.parse(request.body)
+    const { email, username, password } = autheticateBodySchema.parse(request.body)
 
     try {
         const prismaUsersRepository = new PrismaUsersRepository()
         const autheticateUseCase = new AuthenticateUseCase(prismaUsersRepository)
 
-        const { user } = await autheticateUseCase.execute({ email, password })
+        const { user } = await autheticateUseCase.execute({ email, username, password })
         
         const token = await reply.jwtSign({}, {
             sign: {

@@ -4,7 +4,8 @@ import { UsersRepository } from 'src/repositories/users-repository';
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error';
 
 interface AuthenticateUseCaseRequest {
-    email: string
+    email?: string
+    username?: string
     password: string
 }
 
@@ -15,8 +16,16 @@ interface AuthenticateUseCaseResponse {
 export class AuthenticateUseCase {
     constructor(private usersRepository: UsersRepository) {}
 
-    async execute({ email, password }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
-        const user = await this.usersRepository.findByEmail(email)
+    async execute({ email,username, password }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
+        let user = null
+
+        if (email) {
+            user = await this.usersRepository.findByEmail(email)
+        }
+
+        if (username) {
+            user = await this.usersRepository.findByUsername(username)
+        }
 
         if (!user) {
             throw new InvalidCredentialsError()

@@ -6,7 +6,7 @@ export async function getAll(request: FastifyRequest, reply: FastifyReply) {
     try {
         const prismaUsersRepository = new PrismaUsersRepository()
         const getAllUsersUseCase = new GetAllUsersUseCase(prismaUsersRepository)
-        const users = await getAllUsersUseCase.execute()
+        const { users } = await getAllUsersUseCase.execute()
 
         return reply.status(200).send(users)
     } catch (err) {
