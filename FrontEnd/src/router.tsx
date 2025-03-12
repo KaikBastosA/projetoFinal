@@ -8,6 +8,7 @@ import FeedBack from "./pages/feedBack/feedBack.tsx";
 import RegLayout from './layouts/regsLayout/regsLayout.tsx'
 import Cadastro from './pages/cadastro/cadastro.tsx'
 import Carrinho from "./pages/carrinho";
+import Favoritos from "./pages/favoritos";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: 'carrinho',
                 element: <Carrinho/>
+            },
+            {
+                path: 'favoritos',
+                element: <Favoritos/>
             },
             {
                 path: 'reg',
