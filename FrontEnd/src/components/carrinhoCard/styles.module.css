@@ -1,0 +1,64 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.bookCover img {
+    width: 80px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.about {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.about h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.about p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.quantidadeContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.botao {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.botao img {
+    width: 16px;
+    height: 16px;
+}
+
+.removeButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.removeButton img {
+    width: 16px;
+    height: 16px;
+    filter: invert(40%) sepia(40%) saturate(300%) hue-rotate(180deg);
+}
