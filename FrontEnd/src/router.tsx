@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./layouts/mainLayout/layout.tsx";
-import Infantil from "./pages/infantil";
 import Home from "./pages/home";
 import Individual from './pages/pijamaIndividual'
 import Login from './pages/login/login.tsx'
@@ -19,10 +18,6 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home/>
-            },
-            {
-                path: 'infantil',
-                element: <Infantil/>
             },
             {
                 path: 'pijama/:id',

@@ -1,4 +1,3 @@
-import { useNavigate, useParams } from 'react-router-dom'
 import Form from '../../components/form/form'
 import s from './cadastro.module.css'
 import { UserCreate, userCreateSchema } from '../../types/UserCreateSchema'
@@ -7,8 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import api from '../../api/api'
 
 export default function cadastro() {
-
-    var nav = useNavigate()
 
     var form = useForm({
         resolver: zodResolver(userCreateSchema)
