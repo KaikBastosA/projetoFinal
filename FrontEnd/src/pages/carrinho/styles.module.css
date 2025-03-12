@@ -1,0 +1,94 @@
+.nav {
+    width: 100%;
+    display: flex;
+    gap: 1.3rem;
+    background-color: #FCF7F8;
+    align-items: center;
+}
+
+.carrinhoBotao {
+    width: 16rem;
+    height: 7rem;
+    border: none;
+    background: none;
+    margin-top: 1.5rem;
+    cursor: pointer;
+
+    font-family: var(--terciary-Font);
+    font-weight: 400;
+    font-size: 2.3rem;
+    color: #A31621;
+    
+    display: flex; /* Adicionado */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 0.8rem;
+}
+
+.carrinhoBotao > img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.favoritoBotao {
+    width: 16rem;
+    height: 7rem;
+    border: none;
+    background: none;
+    margin-top: 1.5rem;
+    cursor: pointer;
+
+    font-family: var(--terciary-Font);
+    font-weight: 400;
+    font-size: 2.3rem;
+    color: #A4A8B0 ;
+    
+    display: flex; /* Adicionado */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 0.8rem;
+}
+
+.favoritoBotao > img {
+    width: 3rem;
+    height: 3rem;
+}
+
+
+.comprar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.comprar > button {
+    width: 308px;
+    height: 93px;
+    border-radius: 10px;
+    border: none;
+    background-color: #72A8C1;
+    box-shadow: 0px 5px 6px 0px #00000040;
+
+    color: #FFF;
+    font-family: var(--quaternary-Font);
+    font-weight: 500;
+    font-size: 2rem;
+
+    margin: 0 2rem 2rem 2rem;
+    cursor: pointer;
+}
+
+.total {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 2rem;
+}
+
+.total > h2, .total > p {
+    font-family: var(--primary-Font);
+    font-weight: 700;
+    font-size: 2.7rem;
+}
