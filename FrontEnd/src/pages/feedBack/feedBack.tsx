@@ -1,7 +1,7 @@
 import Form from '../../components/form/form'
 import s from './feedback.module.css'
-import star from '../../assets/Star.svg'
-import emptyStar from '../../assets/EmptyStar.svg'
+import star from '../../assets/WhiteStar.svg'
+import emptyStar from '../../assets/EmptyWhiteStar.svg'
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import api from '../../api/api';
