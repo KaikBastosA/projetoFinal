@@ -35,7 +35,7 @@ export default function FeedbackSlider() {
             modules={[Navigation, Autoplay]}
             loop={true}
             navigation
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            autoplay={{ delay: 333000, disableOnInteraction: false }}
             className={styles.feedbackContainer}
             breakpoints={{
                 1024: {

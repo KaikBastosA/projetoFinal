@@ -6,6 +6,7 @@
 .feedbackCard {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 25rem;
     height: 25rem;
@@ -38,10 +39,12 @@
 
 .stars {
     display: flex;
-    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 .stars img {
-    width: 2.2rem;
+    width: 2.5rem;
     height: auto;
 }
