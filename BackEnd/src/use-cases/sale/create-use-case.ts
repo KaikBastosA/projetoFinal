@@ -110,7 +110,7 @@ export class CreateSaleCase {
                 saleId: sale.id,
                 pajamasId: pajamas[i].pajamaId,
                 quantity: pajamas[i].quantidade,
-                price : pajama.price
+                price : pajama.price * pajamas[i].quantidade
                 
             })
             const pajamaSize = await sizeRepository.find(pajama.id, pajamas[i].tamanho)
