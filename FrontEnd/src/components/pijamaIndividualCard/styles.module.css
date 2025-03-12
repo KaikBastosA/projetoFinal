@@ -8,15 +8,15 @@
     justify-content: center;
 }
 
-
 .buyPijama > img {
     width: 554px;
+    
     border-radius: 5px;
     box-shadow: 16px 16px 16px 0px #00000040;
 }
 
 .buyContainer {
-    width: 100%;
+    width: 545px;
     padding: 1rem;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .priceContainer {
-    margin: 1rem 0;
+    margin: 2rem 0;
     display: flex;
     flex-direction: column;
 }
@@ -75,7 +75,7 @@
     width: 302px;
     display: flex;
     flex-direction: column;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
 }
 
 .tamanhosContainer > h4 {
@@ -99,6 +99,7 @@
     border-radius: 1.5px;
     border: none;
     margin-bottom: 1rem;
+    cursor: pointer;
 
     font-family: var(--terciary-Font);
     font-weight: 400;
@@ -110,6 +111,12 @@
         background-color: #97C3D8;
         color: #3E677A;
     }
+}
+
+.tamanhosBotoes > button.selecionado {
+    background-color: #97C3D8;
+    color: #3E677A;
+    font-weight: bold;
 }
 
 .tamanhosContainer > p {
@@ -130,7 +137,7 @@
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
 }
 
 .quantidadeContainer > h4 {
@@ -192,6 +199,7 @@
     display: flex;
     gap: .8rem;
     align-items: center;
+    margin-top: 5rem;
 }
 
 .addCarrinhoBotao {
@@ -207,6 +215,15 @@
     font-size: 1.5rem;
     text-align: center;
     color: #FCF7F8;
+
+    &:hover {
+        background-color: #97C3D8;
+        color: #3E677A;
+    }
+}
+
+.addCarrinhoBotao:disabled {
+    cursor: not-allowed;
 }
 
 .favoritosBotao {

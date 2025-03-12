@@ -26,10 +26,23 @@ export default function login() {
         
         try{
             
-            await api.post('/authenticate', {
-                email: data.EmailOuUsuario,
-                password: data.Senha
-            })
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var obj;
+            
+            if(emailRegex.test(data.EmailOuUsuario)){
+                obj = {
+                    email : data.EmailOuUsuario,
+                    password : data.Senha
+                }
+            }else{
+               obj =  {
+                    username: data.EmailOuUsuario,
+                    password: data.Senha
+                }
+            }
+
+
+            await api.post('/authenticate', obj)
             .then((resp) => {
                 console.log(resp.data)
 

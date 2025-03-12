@@ -11,4 +11,11 @@ export interface Pajama {
     favorite?: boolean;
     onSale?: boolean;
     salePercent?: number;
+    size?: {
+        id: string;
+        stock_quantity: number;
+        size: string;
+        pajamaId: string;
+    }[];
+    selectedSize?: string;
 }
