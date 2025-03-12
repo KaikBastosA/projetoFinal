@@ -9,9 +9,9 @@ export async function getAll(request: FastifyRequest,reply: FastifyReply) {
         const prismaFeedbackRepository = new PrismaFeedbacksRepository()
         const getAllFeedbacksUseCase = new GetAllFeedbacksUseCase(prismaFeedbackRepository)
 
-        const feedbacks = await getAllFeedbacksUseCase.execute()
+        const {feedback} = await getAllFeedbacksUseCase.execute()
 
-        return reply.status(200).send({ feedbacks })
+        return reply.status(200).send(feedback)
 
     } catch (err) {
         if (err instanceof ResourceNotFoundError){

@@ -9,9 +9,9 @@ export async function getAll(request: FastifyRequest, reply: FastifyReply) {
         
         const prismaPajamaRepository = new PrismaPajamaRepository()
         const getAllPajama = new GetAllPajamaCase( prismaPajamaRepository )
-        const users = await getAllPajama.execute()
+        const {pajamas} = await getAllPajama.execute()
 
-        return reply.status(200).send(users)
+        return reply.status(200).send(pajamas)
     } catch (err) {
         console.error("Error on get all users", err)
         return reply.status(500).send({ message: "Internal server error" })
