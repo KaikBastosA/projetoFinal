@@ -7,6 +7,15 @@ import { PajamaSalesRepository } from "../sales.repository";
 
 export class PrismaSaleRepository implements  PajamaSalesRepository {
 
+    async delete(id: string): Promise<Sale | null> {
+        const sale = await prisma.sale.delete({
+            where: {
+                id
+            }
+        })
+        return sale
+    }
+
     async create(data: Prisma.SaleUncheckedCreateInput ) : Promise<Sale | null > {
         const sale = await prisma.sale.create({
             data

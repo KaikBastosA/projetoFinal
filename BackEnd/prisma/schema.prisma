@@ -61,7 +61,7 @@ model Sale {
   card_number    String?
 
   addressId String @unique
-  Address   Address @relation(fields: [addressId], references: [id])
+  Address   Address @relation(fields: [addressId], references: [id], onDelete: Cascade)
 
   Pajmas Sale_Pajamas[]
 
