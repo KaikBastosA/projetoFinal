@@ -42,8 +42,12 @@ export class PrismaPajamaRepository  {
             where: {
                 id
             },
-             include: { size: true } 
+             include: { size: true} 
         })
+        if (pajama) {
+            const order = ['PP', 'P', 'M', 'G', 'GG'];
+            pajama.size.sort((a, b) => order.indexOf(a.size) - order.indexOf(b.size));
+        }
         return pajama; 
     }
 
