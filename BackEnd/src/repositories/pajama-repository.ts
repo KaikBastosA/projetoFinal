@@ -1,7 +1,8 @@
 import { FeedBack, Pajama, Prisma } from "@prisma/client";
 
 export interface UpdatePajamaInput{
-    favorite    ?: boolean
+    favorite?: boolean
+    on_sale?: boolean
 }
 
 

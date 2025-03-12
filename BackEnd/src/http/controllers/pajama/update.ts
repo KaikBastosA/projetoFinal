@@ -12,12 +12,13 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
     })
 
     const updateBodySchema = z.object({
-        favorite : z.boolean().optional()
+        favorite: z.boolean().optional(),
+        on_sale : z.boolean().optional()
     })
 
     const { id } = updateParamsSchema.parse(request.params)
 
-    const { favorite } = updateBodySchema.parse(request.body)
+    const { favorite , on_sale} = updateBodySchema.parse(request.body)
 
     try {
         const prismaPajamaRepository = new PrismaPajamaRepository()
@@ -25,7 +26,8 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
         const user = await updatePajamaCase.execute({
             id,
             data: {
-                favorite
+                favorite,
+                on_sale
             }
         })
 
