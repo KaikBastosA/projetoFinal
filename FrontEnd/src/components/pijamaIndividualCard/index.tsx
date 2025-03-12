@@ -49,7 +49,7 @@ export default function PijamaIndividualCard( pijama: Pajama) {
 
                         <div className={styles.price}>
                             <h2>R$ {pijama.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} </h2>
-                            <p>6x de <span className={styles.priceSpan}>{(pijama.price/6).toLocaleString('pt-BR', {maximumFractionDigits: 2})}</span> </p>
+                            <p>6x de <span className={styles.priceSpan}>{(pijama.price/6).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span> </p>
                         </div>
                         <p>Ou por <span className={styles.priceContainerSpan}>R${precoPix}</span> no PIX</p>
                     </div>
@@ -58,7 +58,7 @@ export default function PijamaIndividualCard( pijama: Pajama) {
                         <h4>Tamanhos:</h4>
 
                         <div className={styles.tamanhosBotoes}>
-                            {pijama.size?.slice().reverse().map(({ size }) => 
+                            {pijama.size?.map(({ size }) => 
                                 <button
                                     key={size}
                                     className={tamanhoSelecionado === size ? styles.selecionado : ''}
