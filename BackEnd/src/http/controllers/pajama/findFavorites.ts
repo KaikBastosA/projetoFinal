@@ -10,7 +10,7 @@ export async function findFavorites(request: FastifyRequest, reply: FastifyReply
         
         const prismaPajamaRepository = new PrismaPajamaRepository()
         const getAllPajama = new GetFavoritesPajamaCase( prismaPajamaRepository )
-        const pajamas = await getAllPajama.execute()
+        const { pajamas } = await getAllPajama.execute()
 
         return reply.status(200).send(pajamas)
     } catch (err) {
