@@ -15,13 +15,16 @@ export async function get(request: FastifyRequest,reply: FastifyReply) {
     try {
         const sale_pajamaRepository = new PrismaSale_PajamaRepository()
         const prismaSaleRepository = new PrismaSaleRepository()
-        const getSaleUseCase = new GetSaleUseCase(prismaSaleRepository ,  sale_pajamaRepository  )
+        const getSaleUseCase = new GetSaleUseCase(prismaSaleRepository, sale_pajamaRepository)
 
         const { sale, quantidade } = await getSaleUseCase.execute({
             id
         });
-    
-        return reply.status(200).send({ sale, quantidade });
+        
+        const response = { ...sale, quantidade };
+
+
+        return reply.status(200).send( response );
     
 
     } catch (err) {
