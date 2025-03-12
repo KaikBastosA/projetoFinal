@@ -14,7 +14,7 @@ export async function get(request: FastifyRequest, reply: FastifyReply) {
     try {
         const prismaUsersRepository = new PrismaUsersRepository()
         const getUserUseCase = new GetUserUseCase(prismaUsersRepository)
-        const user = await getUserUseCase.execute({
+        const {user} = await getUserUseCase.execute({
             userId
         })
 
