@@ -1,5 +1,5 @@
 export interface Pajama {
-    id: number;
+    id: string;
     name: string;
     description?: string;
     image: string;
@@ -8,7 +8,7 @@ export interface Pajama {
     season?: string;
     type?: string;
     gender?: string;
-    favorite: boolean;
-    onSale: boolean;
+    favorite?: boolean;
+    onSale?: boolean;
     salePercent?: number;
 }
