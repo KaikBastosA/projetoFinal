@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Modal from 'react-modal';
 import s from './pagamentoCard.module.css'
 import { useForm } from 'react-hook-form';
 import {Data, DataSchema} from '../../types/dataSchema'
 import { zodResolver } from '@hookform/resolvers/zod';
 import Select from 'react-select'
+import { PaymentSchema } from '../../types/paymentSchema';
+import CartContext from '../../context/CartContext';
+import { Pajama } from '../../types/Pajama';
 
 interface PagamentoCardProps{
     modalPagIsOpen: boolean,
@@ -14,13 +17,34 @@ interface PagamentoCardProps{
     dataObj: Data
 }
 
+interface Pagamento{
+    Cartao: string
+}
+
+interface PajamaSale{
+    pajamaId: string,
+    quantidade: number,
+    tamanho: string
+}
+
 export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataIsOpen, setPagIsOpen, dataObj}: PagamentoCardProps) {
 
     console.log(dataObj)
 
+    var {cart} = useContext(CartContext)
+    
+    var pajamaSales: PajamaSale[] = cart.map((item: Pajama) => ({
+        pajamaId: item.id,
+        quantidade: item.quantidade ?? 0,
+        tamanho: item.selectedSize ?? 'P'
+    }));
+
+    
+    console.log(cart)
+
 
     var form = useForm({
-        resolver: zodResolver(DataSchema)
+        resolver: zodResolver(PaymentSchema)
     })
 
     function openPagModal() {
@@ -43,15 +67,50 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
         setDataIsOpen(false);
     }
 
-    async function ValidateData(data: Data){
+    async function ValidateData(data: Pagamento){
         try{
-            
+            var obj = {
+                buyer_name: dataObj.Nome,
+                cpf: dataObj.CPF, 
+                //price: , 
+                payment_method: selectedPagamentoOption, 
+                installments: selectedParcelamentoOption, 
+                card_number: data.Cartao, 
+                zip_code: dataObj.CEP, 
+                state: dataObj.UF, 
+                city: dataObj.Cidade,
+                neighborhood: dataObj.Bairro , 
+                address: dataObj.Logradouro , 
+                number: dataObj.Numero , 
+                pajamas: pajamaSales
+                 
+            }
+
             
         }catch(err){
             console.log(err)
         }
     }
 
+
+    var pagamento = [
+        {value: "cartao", label: 'Cartão de crédito'   },
+        {value: "pix", label: 'PIX'   }
+    ]
+
+    var parcelamento = [
+        {value: 1, label: 'x1'},
+        {value: 2, label: 'x2'},
+        {value: 3, label: 'x3'},
+        {value: 4, label: 'x4'},
+        {value: 5, label: 'x5'},
+        {value: 6, label: 'x6'},
+    ]
+
+    const [selectedPagamentoOption, setSelectedPagamentoOption] = useState()
+    const [selectedParcelamentoOption,setSelectedParcelamentoOption] = useState()
+    
+    
 
     return (
         <Modal
@@ -65,13 +124,26 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
             <div className={s.inputs_main_div}>
                 <form className={s.dados_form} onSubmit={form.handleSubmit(ValidateData)}>
                     <h2 className={s.title}>Pagamento</h2>
-                    <div>
-                        <Select placeholder='Forma de pagamento'></Select>
-                        <Select placeholder='Parcelamento'></Select>
-                        <Select placeholder='Forma de pagamento'></Select>
+                    <div className={s.info_div}>
+                        <Select placeholder='Forma de pagamento'
+                            options={pagamento}
+                            className={s.select_pag}
+                            onChange={(obj: any) => {setSelectedPagamentoOption(obj?.value)}}                            
+                        ></Select>
+                        <Select placeholder='Parcelamento x6'
+                            options={parcelamento}
+                            className={selectedPagamentoOption === "pix"? s.select_par_none : s.select_par}
+                            onChange={(obj: any) => {setSelectedParcelamentoOption(obj?.value)}}
+                            defaultValue={parcelamento[0].value}
+                        ></Select>
+                        <div className={s.input_error_div}>
+                            <input type="text" placeholder='Número do cartão' className={s.input_cartao} style={selectedPagamentoOption === "pix" ? {display: 'none'} : {}} {...form.register("Cartao")}/>
+                            {form.formState.errors.Cartao && selectedPagamentoOption === "cartao" && <span className={s.errorMessage}>{form.formState.errors.Cartao.message}</span>}
+                        </div>
+                        
                     </div>
-                    <div>
-                        <button className={s.back_button} onClick={() => {closePagModal(); openDataModal()}}>Voltar</button>
+                    <div className={s.btns_div}>
+                        <button className={s.back_button} onClick={() => {closePagModal(); openDataModal()}}>{'< Voltar'}</button>
                         <button className={s.env_button}>Enviar</button>
                     </div>
                     
