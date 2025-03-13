@@ -1,20 +1,54 @@
 import useFavoriteStore from '../../stores/FavoriteStore'
 import carrinhoClicado from '../../assets/carrinho-de-comprar-icon.svg'
 import carrinhoNaoClicado from '../../assets/carrinho-de-compras-cinza-icon.svg'
-import favoritoClicado from '../../assets/favorite-heart-icon.svg'
+import favoritoClicado from '../../assets/full-heart.svg'
 import styles from './styles.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import CardPajama from '../../components/cardPajama'
+import api from '../../api/api'
+
+interface Pijama {
+    id: string;
+    name: string;
+    description: string;
+    image: string;
+    price: number;
+    season: string;
+    type: string;
+    gender: string;
+    favorite: boolean;
+    on_sale: boolean;
+    sale_percent: number;
+}
 
 export default function Favoritos() {
 
-    const { favorites } = useFavoriteStore()
+    const { favorites, fetchFavorites } = useFavoriteStore()
     const navigate = useNavigate() 
     const [ carrinhoAtivo, setCarrinhoAtivo] = useState(false)
+    const [listaDePijamas, setListaDePijamas] = useState<Pijama[]>([])
+
+    useEffect(() => {
+        api.get<Pijama[]>('/all-pajamas')
+            .then(response => {
+                setListaDePijamas(response.data);
+            })
+            .catch(error => console.error("Erro ao buscar pijama:", error));
+    }, []);
+
+    useEffect(() => {
+        fetchFavorites();
+    }, []);
 
     function handleClick() {
         setCarrinhoAtivo(true)
         navigate('/carrinho')
+    }
+
+    function handleToggleFavorite(id: string) {
+        // Adicione a lógica para alternar o favorito
+        console.log("Toggling favorite for:", id);
     }
 
     return(
@@ -29,17 +63,23 @@ export default function Favoritos() {
                     Favoritos
                 </button>
             </div>
-            {favorites.length > 0 ? (
-                favorites.map((item) => (
-                    <div key={item.id}>
-                        <img src={item.image} alt={item.name} />
-                        <p>{item.name}</p>
-                        <p>R$ {item.price.toFixed(2)}</p>
-                    </div>
-                ))
-            ): (
-                <p>Você ainda não tem favoritos.</p>
-            )}
+            <div className={styles.container}>
+                {favorites.length > 0 ? (
+                    favorites.map((item) => {
+                        const pijamaCompleto = listaDePijamas.find(p => p.id === item.id); 
+
+                        if (!pijamaCompleto) return null; // Se não encontrar, não renderiza nada
+
+                        return (
+                            <div className={styles.box} key={item.id}>
+                                <CardPajama onToggleFavorite={() => handleToggleFavorite} pijama={pijamaCompleto} />
+                            </div>
+                        );
+                    })
+                ) : (
+                    <p>Você ainda não tem favoritos.</p>
+                )}
+            </div>
         </div>
     )
 }

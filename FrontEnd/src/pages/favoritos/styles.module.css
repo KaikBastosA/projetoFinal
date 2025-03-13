@@ -53,3 +53,14 @@
     width: 3rem;
     height: 3rem;
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: .8rem; 
+    background-image: url('../../assets/background-pijama.svg');
+    background-size: cover;
+    padding: 2rem;
+}
+
+
