@@ -11,8 +11,8 @@ interface CarrinhoCardProps {
         name: string;
         image: string;
         price: number;
-        onSale?: boolean;
-        salePercent?: number;
+        on_sale?: boolean;
+        sale_percent?: number;
         quantidade: number;
         selectedSize: string;
         size: {
@@ -32,6 +32,8 @@ export default function CarrinhoCard( { pijama }: CarrinhoCardProps) {
     const { removeFromCart, updateQuantity } = useCartStore()
     const [quantidade, setQuantidade] = useState(pijama.quantidade)
 
+    const precoComDesconto = pijama.on_sale ? pijama.price * (1 - ((pijama.sale_percent ?? 0)/ 100)) : pijama.price
+
     const aumentarQuantidade = () => {
         setQuantidade(prev => prev + 1);
         updateQuantity(pijama.id, quantidade + 1);
@@ -43,10 +45,6 @@ export default function CarrinhoCard( { pijama }: CarrinhoCardProps) {
             updateQuantity(pijama.id, quantidade - 1);
         }
     }
-
-    {/*const precoFinal = pijama.onSale 
-        ? pijama.price * (1 - (pijama.salePercent ?? 0) / 100)
-        : pijama.price;*/}
 
     return(
         <div className={styles.card}>
@@ -71,13 +69,20 @@ export default function CarrinhoCard( { pijama }: CarrinhoCardProps) {
                             <img src={subtract} alt="Diminuir" />
                         </button>
                         <span>{quantidade}</span>
-                        <button className={styles.aumentarBotao} onClick={aumentarQuantidade}>
+                        <button className={styles.aumentarBotao} onClick={aumentarQuantidade} disabled={quantidade >= (tamanhoInfo?.stock_quantity ?? 0)}>
                             <img src={plus} alt="Aumentar" />
                         </button>
                     </div>
                     <p>Não perca sua oportunidade! Há apenas mais <span>{tamanhoInfo?.stock_quantity ?? 0}</span> peças disponíveis!</p>
                 </div>
-                <p>R$ {pijama.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                {pijama.on_sale ? (
+                    <div className={styles.precoComDesconto}>
+                        <p className={styles.precoAntigo}>R$ {pijama.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                        <p className={styles.precoDesconto}>R${precoComDesconto.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
+                    </div>
+                ) : (
+                    <p>R$ {pijama.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                )}
             </div>
 
                 <div className={styles.removeContainer}>
