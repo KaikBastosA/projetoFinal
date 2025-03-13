@@ -44,3 +44,29 @@
 .swiperButtonPrev {
   left: 10px;
 }
+
+/* Container de Texto */
+
+.slideContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.textWrapper {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
