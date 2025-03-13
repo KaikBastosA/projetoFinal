@@ -8,6 +8,7 @@ import Select from 'react-select'
 import { PaymentSchema } from '../../types/paymentSchema';
 import CartContext from '../../context/CartContext';
 import { Pajama } from '../../types/Pajama';
+import api from '../../api/api';
 
 interface PagamentoCardProps{
     modalPagIsOpen: boolean,
@@ -31,13 +32,16 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
 
     console.log(dataObj)
 
-    var {cart} = useContext(CartContext)
+    var {cart, total} = useContext(CartContext)
     
-    var pajamaSales: PajamaSale[] = cart.map((item: Pajama) => ({
-        pajamaId: item.id,
-        quantidade: item.quantidade ?? 0,
-        tamanho: item.selectedSize ?? 'P'
-    }));
+    if(cart != undefined){
+        var pajamaSales: PajamaSale[] = cart.map((item: Pajama) => ({
+            pajamaId: item.id,
+            quantidade: item.quantidade ?? 0,
+            tamanho: item.selectedSize ?? 'P'
+        }));
+    }
+    
 
     
     console.log(cart)
@@ -67,12 +71,14 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
         setDataIsOpen(false);
     }
 
+    const [confirmationModalIsOpen, setConfirmationModalIsOpen] = useState(false);
+
     async function ValidateData(data: Pagamento){
         try{
             var obj = {
                 buyer_name: dataObj.Nome,
                 cpf: dataObj.CPF, 
-                //price: , 
+                price: total, 
                 payment_method: selectedPagamentoOption, 
                 installments: selectedParcelamentoOption, 
                 card_number: data.Cartao, 
@@ -86,10 +92,28 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
                  
             }
 
+            await api.post('/create-sale', obj)
+            .then((resp) => {
+                
+                if(resp.status == 201){
+                    console.log(resp)
+                    closePagModal()
+                    setConfirmationModalIsOpen(true);
+                    
+                }
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
             
         }catch(err){
             console.log(err)
         }
+    }
+
+    function closeConfirmationModal() {
+        setConfirmationModalIsOpen(false);
     }
 
 
@@ -113,6 +137,7 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
     
 
     return (
+        <>
         <Modal
         isOpen={modalPagIsOpen}
         onAfterOpen={afterPagOpenModal}
@@ -153,7 +178,22 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
             
       </Modal>
 
+      <Modal
+            isOpen={confirmationModalIsOpen}
+            onRequestClose={closeConfirmationModal}
+            contentLabel="Confirmation Modal"
+            className={s.modal}
+        >
+            <div className={s.inputs_main_div}>
+                <h2 className={s.title}>Pagamento Confirmado</h2>
+                <p className={s.confirmationMessage}>Seu pagamento foi realizado com sucesso!</p>
+                <button className={s.env_button} onClick={closeConfirmationModal}>Fechar</button>
+            </div>
+        </Modal>
+        </>
+
     )
 
 
 }
+
