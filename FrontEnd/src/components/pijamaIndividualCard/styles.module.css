@@ -25,6 +25,7 @@
     font-size: 3rem;
     font-family: var(--terciary-Font);
     color: #274553;
+    text-transform: uppercase;
 }
 
 .buyContainer > p {
@@ -39,6 +40,43 @@
     margin: 2rem 0;
     display: flex;
     flex-direction: column;
+}
+
+.priceComDesconto{
+    display: flex;
+    flex-direction: column;
+}
+
+.priceComDesconto > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.priceComDesconto > div > p {
+    font-family: var(--primary-Font);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #5F6165;
+    margin-top: auto;
+}
+
+.precoAntigo {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-decoration: line-through;
+    color: #B82935;
+    display: flex;
+    align-items: center;
+    
+}
+
+.precoDesconto {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-top: auto;
 }
 
 .price {

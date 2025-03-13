@@ -40,14 +40,13 @@ const icones: {
     }
 }
 
-
 export default function pijamaIndividual() {
 
     const { id } = useParams(); 
     const [pijama, setPijama] = useState<Pajama | null>(null);
 
     useEffect(() => {
-        api.get(`/pajamas/${id}`)
+        api.get<Pajama>(`/pajamas/${id}`)
             .then(response => {
                 setPijama(response.data);
             })
@@ -60,7 +59,7 @@ export default function pijamaIndividual() {
         <div className={styles.individual}>
 
             <div className={styles.buyContainer}>
-                <PijamaIndividualCard id={pijama.id} name={pijama.name} image={pijama.image} price={pijama.price} size={pijama.size}/>
+                <PijamaIndividualCard id={pijama.id} name={pijama.name} image={pijama.image} price={pijama.price} size={pijama.size} on_sale={pijama.on_sale} sale_percent={pijama.sale_percent} favorite={pijama.favorite}/>
             </div>
 
             <div className={styles.caracteristicasContainer}>
