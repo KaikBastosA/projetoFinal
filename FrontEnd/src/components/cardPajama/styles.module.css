@@ -1,0 +1,124 @@
+/* Card Principal */
+.cardContainer {
+  width: 25.5rem;
+  height: 55rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Ícones no topo */
+.iconsContainer {
+  position: absolute;
+  top: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.iconButton {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.iconButton img.favoriteIcon {
+  width: 64px;
+  height: 64px;
+  background-color: transparent;
+}
+
+.iconPromo {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagem */
+.imageContainer {
+  width: 100%;
+  height: 40rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pijamaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+}
+
+/* Retângulo azul */
+.infoContainer {
+  height: calc(55rem - 40rem);
+  padding: 1rem 2rem;
+  gap: 1rem;
+  background-color: #97C3D8;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Conteúdo do retângulo azul */
+
+.pijamaName {
+  font-family: 'Numans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 5%;
+  text-transform: uppercase;
+  text-align: start;
+  color: #3E677A;
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 5rem;
+}
+
+
+
+.oldPrice {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 5%;
+  text-transform: uppercase;
+  text-decoration: line-through;
+  color: #B82935;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.currentPrice {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #274553;
+
+}
+
+.parcelado {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1rem;
+  color: #274553;
+}
+
+/* Não Apagar*/
+
+.noPromo p {
+  color: transparent;
+}
