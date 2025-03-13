@@ -8,9 +8,9 @@ export interface Pajama {
     season?: string;
     type?: string;
     gender?: string;
-    favorite?: boolean;
-    onSale?: boolean;
-    salePercent?: number;
+    favorite: boolean;
+    on_sale?: boolean;
+    sale_percent?: number;
     size?: {
         id: string;
         stock_quantity: number;
