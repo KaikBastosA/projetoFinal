@@ -4,6 +4,7 @@ import s from './dadosCard.module.css'
 import { useForm } from 'react-hook-form';
 import {Data, DataSchema} from '../../types/dataSchema'
 import { zodResolver } from '@hookform/resolvers/zod';
+import isValidCEP from '../../validators/cepValidator';
 
 interface DadosCradProps{
     modalIsOpen: boolean,
@@ -26,12 +27,14 @@ export default function DadosCard({modalIsOpen, setIsOpen}: DadosCradProps) {
     }
 
     function closeModal() {
+        form.reset();
         setIsOpen(false);
     }
 
-    function ValidateData(data: Data){
+    async function ValidateData(data: Data){
         try{
-            console.log(data)
+            
+            
         }catch(err){
             console.log(err)
         }
@@ -63,19 +66,29 @@ export default function DadosCard({modalIsOpen, setIsOpen}: DadosCradProps) {
                     {form.formState.errors.Logradouro && <span className={s.errorMessage}>{form.formState.errors.Logradouro.message}</span>}
                     
                     <div className={s.inputs_sub_div}>
-                        <div>
-                            <input className={s.min_input} type="text" placeholder='UF' {...form.register("UF")}/>
-                            {form.formState.errors.UF && <span className={s.errorMessage}>{form.formState.errors.UF.message}</span>}
+                        <div className={s.testeg}>
+                            <div className={s.teste}>
+                                <input className={s.min_input} type="text" placeholder='UF' {...form.register("UF")}/>
+                                {form.formState.errors.UF && <span className={s.errorMessage}>{form.formState.errors.UF.message}</span>}
+                            </div>
+                            <div className={s.teste}>
+                                <input className={s.med_input} type="text" placeholder='Cidade' {...form.register("Cidade")}/>
+                                {form.formState.errors.Cidade && <span className={s.errorMessage}>{form.formState.errors.Cidade.message}</span>}
+                            </div>
                             
-                            <input className={s.med_input} type="text" placeholder='Cidade' {...form.register("Cidade")}/>
-                            {form.formState.errors.Cidade && <span className={s.errorMessage}>{form.formState.errors.Cidade.message}</span>}
+                            
                         </div>
-                        <div>
-                            <input className={s.min_input} type="text" placeholder='Número' {...form.register("Numero")}/>
-                            {form.formState.errors.Numero && <span className={s.errorMessage}>{form.formState.errors.Numero.message}</span>}
+                        <div className={s.testeg}>
+                            <div className={s.teste}>
+                                <input className={s.min_input} type="text" placeholder='Número' {...form.register("Numero")}/>
+                                {form.formState.errors.Numero && <span className={s.errorMessage}>{form.formState.errors.Numero.message}</span>}
+                            </div>
                             
-                            <input className={s.med_input} type="text" placeholder='Bairro' {...form.register("Bairro")}/>
-                            {form.formState.errors.Bairro && <span className={s.errorMessage}>{form.formState.errors.Bairro.message}</span>}
+                            <div className={s.teste}>
+                                <input className={s.med_input} type="text" placeholder='Bairro' {...form.register("Bairro")}/>
+                                {form.formState.errors.Bairro && <span className={s.errorMessage}>{form.formState.errors.Bairro.message}</span>}
+                            </div>
+                            
                         </div>
                     </div>
                     <button className={s.env_button}>Enviar</button>

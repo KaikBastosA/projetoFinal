@@ -3,7 +3,7 @@
     width: fit-content;
     height: max-content;
     position: relative;
-    top: 30vh;
+    top: 15vh;
     left: 40vw;
     padding: 20px;
 }
@@ -33,6 +33,7 @@
 
 .min_input {
     width: 5vw;
+    margin-bottom: 10px;
 }
 
 .med_input{
@@ -66,4 +67,15 @@
     border-radius: 5px;
     margin-top: 5px;
     display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.teste{
+    display: flex;
+    flex-direction: column;
+}
+
+.testeg{
+    display: flex;
 }
