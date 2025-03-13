@@ -7,4 +7,20 @@
   }
   
 
-  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .rowContainer{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rowContainer{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  }
