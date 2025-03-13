@@ -1,0 +1,23 @@
+.feedbackButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    margin: 3rem 0;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48rem;
+    height: 6.25rem;
+    background-color: #4E8098;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+}
