@@ -2,12 +2,11 @@ import { createContext } from 'react';
 import { Pajama } from '../types/Pajama';
 
 interface CartContext {
-    cart: Pajama[]
+    cart?: Pajama[],
+    total?: number
 }
 
 
-const CartContext = createContext<CartContext>({
-    cart: []
-})
+const CartContext = createContext<CartContext>({})
 
 export default CartContext
