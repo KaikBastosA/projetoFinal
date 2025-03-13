@@ -6,9 +6,10 @@ import useCartStore from "../../stores/CartStore";
 import styles from './styles.module.css'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import DadosCard from "../../components/dadosCard/dadosCard";
 
 export default function Carrinho() {
-
+    const [modalIsOpen, setIsOpen] = useState(false);
     const { cart } = useCartStore()
     const navigate = useNavigate() 
     const [favoritoAtivo, setFavoritoAtivo] = useState(false)
@@ -54,10 +55,11 @@ export default function Carrinho() {
                             <h2>Total: </h2>
                             <p>R${calcularTotal()}</p>
                         </div>
-                            <button>COMPRE TUDO</button>
+                            <button onClick={() => { modalIsOpen ? setIsOpen(false) : setIsOpen(true)}}>COMPRE TUDO</button>
                     </div>
                 </>
             )}
         </div>
+        <DadosCard modalDataIsOpen={modalIsOpen} setDataIsOpen={setIsOpen}></DadosCard>
         </>
 )}

@@ -1,0 +1,28 @@
+.modal{
+    background-color: #4E8098;
+    width: fit-content;
+    height: max-content;
+    position: relative;
+    top: 15vh;
+    left: 40vw;
+    padding: 20px;
+}
+
+.inputs_main_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dados_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.title{
+    color: white;
+    font-weight: 400;
+    font-size: 48px;
+}
