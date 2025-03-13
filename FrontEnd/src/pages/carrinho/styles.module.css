@@ -54,6 +54,11 @@
     height: 3rem;
 }
 
+.box {
+    background-image: url('../../assets/background-pijama.svg');
+    background-size: cover;
+}
+
 
 .comprar {
     display: flex;
