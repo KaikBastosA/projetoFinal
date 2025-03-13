@@ -1,21 +1,27 @@
 import CarrinhoCard from "../../components/carrinhoCard";
 import carrinhoClicado from '../../assets/carrinho-de-comprar-icon.svg'
-import favoritoClicado from '../../assets/favorite-heart-icon.svg'
-import favoritoNaoClicado from '../../assets/favorite-icon.svg'
+import favoritoClicado from '../../assets/full-heart.svg'
+import favoritoNaoClicado from '../../assets/empty-Heart.svg'
 import useCartStore from "../../stores/CartStore";
 import styles from './styles.module.css'
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Carrinho() {
 
     const { cart } = useCartStore()
     const navigate = useNavigate() 
     const [favoritoAtivo, setFavoritoAtivo] = useState(false)
+    const [total, setTotal] = useState(0)
 
-    const calcularTotal = () => {
-        return cart.reduce((total, produto) => total + produto.price * (produto.quantidade ?? 1), 0).toFixed(2) 
-    }
+    useEffect(() => {
+        const novoTotal = cart.reduce(
+            (total, produto) => {
+                const precoFinal = produto.on_sale ? produto.price * (1 - (produto.sale_percent ?? 0) / 100) : produto.price
+                return total + precoFinal * (produto.quantidade ?? 1)
+        },0)
+        setTotal(parseFloat(novoTotal.toFixed(2)))
+    },[cart])
 
     function handleClick() {
         setFavoritoAtivo(true)
@@ -52,7 +58,7 @@ export default function Carrinho() {
                     <div className={styles.comprar}>
                         <div className={styles.total}>
                             <h2>Total: </h2>
-                            <p>R${calcularTotal()}</p>
+                            <p>R${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
                         </div>
                             <button>COMPRE TUDO</button>
                     </div>
