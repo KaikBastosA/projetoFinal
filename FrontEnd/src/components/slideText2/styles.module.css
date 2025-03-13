@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet');
+
+.saleContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('../../assets/hearts.png') no-repeat ;
+    width: 40rem;
+    height: 20rem;
+}
+
+.saleContent h1{
+    font-family: 'Playball', sans-serif;
+    color: #D00D10;
+    font-size: 8rem;
+    position: relative;
+    z-index: 2;
+}
+
+.saleContent h3{
+    font-family: 'Numans', sans-serif;
+    font-size: 3rem;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    bottom: -3rem;
+    z-index: 1;
+}
+
+.saleContent p {
+    font-family: 'Roboto Serif', sans-serif;
+    font-size: 1.2rem;
+    width: 75%;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    position: relative;
+    bottom: 1rem;
+}

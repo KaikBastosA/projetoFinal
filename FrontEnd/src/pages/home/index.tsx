@@ -5,6 +5,8 @@ import people from '../../assets/people-icon.svg';
 import pijama from '../../assets/pijama-icon.svg';
 import truck from '../../assets/truck-icon.svg';
 import FeedbackSlider from '../../components/feedBackSlide';
+import PijamasRow from '../../components/pajamaRows';
+import FeedbackButton from '../../components/feedbackButton';
 
 export default function Home() {
     return (
@@ -35,10 +37,12 @@ export default function Home() {
                 </section>
                 <section className={styles.promos}>
                     <h2>Nossas últimas promoções!</h2>
+                    <PijamasRow />
                 </section>
                 <section className={styles.feedbacks}>
                     <h2>Feedbacks</h2>
                     <FeedbackSlider />
+                    <FeedbackButton />
                 </section>
             </section>
         </>

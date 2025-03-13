@@ -1,18 +1,20 @@
 import styles from './styles.module.css'
 import subtract from '../../assets/Subtract.svg'
 import plus from '../../assets/Plus Math.svg'
-import favorite from '../../assets/favorite-icon.svg'
-import favoritado from '../../assets/favorite-heart-icon.svg'
-import { useState } from 'react'
+import favorite from '../../assets/empty-Heart.svg'
+import favoritado from '../../assets/full-heart.svg'
+import { useEffect, useState } from 'react'
 import useCartStore from '../../stores/CartStore'
 import { Pajama } from '../../types/Pajama'
 import useFavoriteStore from '../../stores/FavoriteStore'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import api from '../../api/api'
 
 export default function PijamaIndividualCard( pijama: Pajama) {
 
-    const { addFavorite, removeFavorite, isFavorite } = useFavoriteStore()
-    const favorito = isFavorite(pijama.id)
+    const { addFavorite, removeFavorite } = useFavoriteStore()
+    const { id } = useParams();
+    const [favorito, setFavorito] = useState<boolean>(false)
     const { addToCart } = useCartStore()
     const [quantidade, setQuantidade] = useState(1)
     const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string | null>(null)
@@ -22,7 +24,17 @@ export default function PijamaIndividualCard( pijama: Pajama) {
         navigate('/')
     }
 
-    const precoPix = (pijama.price * 0.85).toLocaleString('pt-BR', { minimumFractionDigits: 2 }) 
+    useEffect(() => {
+        if (pijama) {
+            setFavorito(pijama.favorite ?? false);
+        }
+    }, [pijama]);
+
+    const desconto = pijama.sale_percent ?? 0
+
+    const precoComDesconto = pijama.on_sale ? pijama.price * (1 - (desconto / 100)) : pijama.price
+
+    const precoPix = (precoComDesconto * 0.85).toLocaleString('pt-BR', { minimumFractionDigits: 2 }) 
     
     const aumentarQuantidade = () => setQuantidade(quantidade + 1);
 
@@ -32,9 +44,26 @@ export default function PijamaIndividualCard( pijama: Pajama) {
         }
     };
 
-    const toggleFavorito = () => {
-        favorito ? removeFavorite(pijama.id) : addFavorite(pijama)
-    }
+    const toggleFavorito = async () => {
+        try {
+            const novoFavorito = !favorito;
+    
+            await api.patch(`/pajama/updateFavorite/${id}`, {
+                favorite: novoFavorito,
+            }); 
+
+            if (novoFavorito) {
+                addFavorite(pijama);
+            } else {
+                removeFavorite(pijama.id);
+            }
+
+            setFavorito(novoFavorito)
+    
+        } catch (error) {
+            console.error("Erro ao atualizar favorito: ", error);
+        }
+    };
 
     return (   
 
@@ -46,12 +75,27 @@ export default function PijamaIndividualCard( pijama: Pajama) {
                     <p>Ref: {pijama.id} </p>
 
                     <div className={styles.priceContainer}>
-
-                        <div className={styles.price}>
-                            <h2>R$ {pijama.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} </h2>
-                            <p>6x de <span className={styles.priceSpan}>{(pijama.price/6).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span> </p>
-                        </div>
-                        <p>Ou por <span className={styles.priceContainerSpan}>R${precoPix}</span> no PIX</p>
+                        {pijama.on_sale ? (
+                            <>
+                                <div className={styles.priceComDesconto}>
+                                    <h2 className={styles.precoAntigo}>R$ {pijama.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h2>
+                                    <div>
+                                        <h2 className={styles.precoDesconto}>R$ {precoComDesconto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h2>
+                                        <p>6x de <span className={styles.priceSpan}>{(precoComDesconto/6).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span> </p>
+                                    </div>
+                                    
+                                </div>
+                                <p>Ou por <span className={styles.priceContainerSpan}>R${precoPix}</span> no PIX</p>
+                            </>
+                        ) : (
+                            <>
+                                <div className={styles.price}>
+                                    <h2>R$ {pijama.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} </h2>
+                                    <p>6x de <span className={styles.priceSpan}>{(pijama.price/6).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span> </p>
+                                </div>
+                                <p>Ou por <span className={styles.priceContainerSpan}>R${precoPix}</span> no PIX</p>
+                            </>
+                        )}
                     </div>
 
                     <div className={styles.tamanhosContainer}>
@@ -82,7 +126,7 @@ export default function PijamaIndividualCard( pijama: Pajama) {
                                    <img src={subtract} alt="subtract-sign" /> 
                             </button>
                             <span>{quantidade}</span>
-                            <button className={styles.aumentarBotao} onClick={aumentarQuantidade}>
+                            <button className={styles.aumentarBotao} onClick={aumentarQuantidade} disabled={quantidade >= (pijama.size?.find((item) => item.size === tamanhoSelecionado)?.stock_quantity ?? 0)}>
                                  <img src={plus} alt="plus-sign" /> 
                             </button>
                         </div>
