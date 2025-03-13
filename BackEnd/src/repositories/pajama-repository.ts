@@ -1,7 +1,8 @@
 import { FeedBack, Pajama, Prisma } from "@prisma/client";
 
 export interface UpdatePajamaInput{
-    favorite    ?: boolean
+    favorite?: boolean
+    on_sale?: boolean
 }
 
 
@@ -13,5 +14,6 @@ export interface  PajamaRepository {
     update(id: string, data: UpdatePajamaInput): Promise<Pajama | null>
 
     findManyFavorite(): Promise<Pajama[] | null>
-    
+    findManyOnsale(): Promise<Pajama[]>
+
 }
