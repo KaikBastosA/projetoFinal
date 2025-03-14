@@ -37,11 +37,14 @@ export default function cadastro() {
             .catch((err) => {
                 form.setError('root', {
                     type: 'server',
-                    message: `Erro ao fazer login: ${err.response.data.message}` 
+                    message: `Erro ao fazer cadastro: ${err.response.data.message}` 
                 })
             })
         }catch{
-            console.log('Erro')
+            form.setError('root', {
+                type: 'server',
+                message: `Erro de servidor ao fazer cadastro` 
+            })
         }
     }
 
@@ -66,7 +69,7 @@ export default function cadastro() {
                 {form.formState.errors.Senha && <span className={s.errorMessage}>{form.formState.errors.Senha.message}</span>}
                 <input className={s.input} type="text" placeholder='Confirmar senha' {...form.register("ConfirmaSenha")}/>
                 {form.formState.errors.ConfirmaSenha && <span className={s.errorMessage}>{form.formState.errors.ConfirmaSenha.message}</span>}
-                <button className={s.reg_btn}>Registrar</button>
+                <button disabled={form.formState.isSubmitting} className={s.reg_btn}>{form.formState.isSubmitting ? 'Cadastrando...' : 'Cadastrar'}</button>
                 {form.formState.errors.root && <span className={s.errorMessage}>{form.formState.errors.root.message}</span>}
             </form>
         </Form>

@@ -66,6 +66,11 @@
     font-size: 20px;
 }
 
+.reg_btn:disabled{
+    cursor: not-allowed;
+    background-color: #e67982;;
+}
+
 @media only screen and (max-width: 800px) {
     .main_div{
         position: relative;
