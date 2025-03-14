@@ -91,3 +91,62 @@ h1 {
     font-weight: 400;
     color: #74010B;
 }
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .mainBanner .banner h1 {
+        font-size: 2rem;
+    }
+
+    .mainBanner .banner img {
+        width: 18rem;
+    }
+
+    .mainBanner {
+        height: 35rem;
+    }
+
+    .positives {
+        flex-wrap: wrap;
+    }
+
+    .positivesContent h2 {
+        max-width: 100%;
+    }
+
+    .mainSiteContent{
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        
+    }
+
+}
+
+@media (max-width: 767px){
+    .mainBanner .banner h1 {
+        font-size: 2rem;
+    }
+
+    .mainBanner .banner img {
+        width: 15rem;
+    }
+
+    .mainBanner {
+        height: 30rem;
+    }
+
+    .positives {
+        flex-wrap: wrap;
+    }
+
+    .positivesContent h2 {
+        max-width: 100%;
+    }
+
+    .mainSiteContent{
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        
+    }
+}

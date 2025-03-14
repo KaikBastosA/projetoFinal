@@ -38,13 +38,13 @@ export default function FeedbackSlider() {
             autoplay={{ delay: 10000, disableOnInteraction: false }}
             className={styles.feedbackContainer}
             breakpoints={{
-                1024: {
+                1381: {
                     slidesPerView: 3,
                 },
-                768: {
+                1000: {
                     slidesPerView: 2,
                 },
-                480: {
+                0: {
                     slidesPerView: 1,
                 },
             }}
