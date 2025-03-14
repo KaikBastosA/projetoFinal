@@ -2,10 +2,11 @@ import CarrinhoCard from "../../components/carrinhoCard";
 import carrinhoClicado from '../../assets/carrinho-de-comprar-icon.svg'
 import favoritoClicado from '../../assets/full-heart.svg'
 import favoritoNaoClicado from '../../assets/empty-Heart.svg'
+import emptyCart from '../../assets/empty-cart.png'
 import useCartStore from "../../stores/CartStore";
 import styles from './styles.module.css'
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DadosCard from "../../components/dadosCard/dadosCard";
 import CartContext from "../../context/CartContext";
 
@@ -33,6 +34,10 @@ export default function Carrinho() {
         navigate('/favoritos')
     }
 
+    function shoppingButton() {
+        navigate('/pijamas/All')
+    }
+
     return (
         <>
 
@@ -54,7 +59,12 @@ export default function Carrinho() {
                         <CarrinhoCard pijama={{ ...produto, quantidade: produto.quantidade ?? 1, selectedSize: produto.selectedSize ?? 'indefinido', size: produto.size ?? [] }} key={produto.id} /> 
                     ))
                 ) : (
-                    <p>O carrinho está vazio.</p>
+                    <div className={styles.emptyCart}>
+                        <img src={emptyCart} alt="" />
+                        <p className={styles.emptyCartText}>O seu carrinho está vazio.</p>
+                        <p>Parece que você não adicionou nada ao seu carrinho ainda.</p>
+                        <button onClick={shoppingButton}>Conheça nossos produtos</button>
+                    </div>
                 )}
             </div>
 

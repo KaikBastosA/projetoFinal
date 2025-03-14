@@ -2,6 +2,7 @@ import useFavoriteStore from '../../stores/FavoriteStore'
 import carrinhoClicado from '../../assets/carrinho-de-comprar-icon.svg'
 import carrinhoNaoClicado from '../../assets/carrinho-de-compras-cinza-icon.svg'
 import favoritoClicado from '../../assets/full-heart.svg'
+import emptyFavorite from '../../assets/no-favorites.png'
 import styles from './styles.module.css'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -49,9 +50,16 @@ export default function Favoritos() {
         navigate('/carrinho')
     }
 
+    function shoppingButton() {
+        navigate('/pijamas/All')
+    }
+
     function handleToggleFavorite(id: string) {
-        // Adicione a lógica para alternar o favorito
-        console.log("Toggling favorite for:", id);
+        api.patch(`/pajama/updateFavorite/${id}`, { favorite: false })
+            .then(() => {
+                fetchFavorites();
+            })
+            .catch(error => console.error("Erro ao atualizar favorito:", error));
     }
 
     return(
@@ -77,9 +85,14 @@ export default function Favoritos() {
                         className={styles.swiperContainer}
                         spaceBetween={5}
                         breakpoints={{
-                            1024: { slidesPerView: 6 },
-                            768: { slidesPerView: 4 },
-                            480: { slidesPerView: 3 },
+                            1920: { slidesPerView: 10 }, // Telas muito grandes (Full HD e superiores)
+                            1600: { slidesPerView: 6 }, // Laptops grandes
+                            1440: { slidesPerView: 6 }, // Laptops médios
+                            1280: { slidesPerView: 5 }, // Telas um pouco menores
+                            1024: { slidesPerView: 4 }, // Tablets grandes
+                            768: { slidesPerView: 3 }, // Tablets médios
+                            600: { slidesPerView: 2 }, // Celulares grandes
+                            480: { slidesPerView: 1 },
                         }}
                     >
                         {favorites.map((item) => {
@@ -100,7 +113,12 @@ export default function Favoritos() {
                   
                     </>
                 ) : (
-                    <p>Você ainda não tem favoritos.</p>
+                    <div className={styles.emptyFavorites}>
+                        <img src={emptyFavorite} alt="" />
+                        <p className={styles.emptyFavoriteText}>Você ainda não possui favoritos.</p>
+                        <p>Você pode adicionar um item aos seus favoritos clicando no ícone de coração.</p>
+                        <button onClick={shoppingButton}>Conheça nossos produtos</button>
+                    </div>
                 )}
             </div>
         </div>
