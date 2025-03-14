@@ -20,9 +20,76 @@
     align-items: center;
 }
 
-
 .title{
     color: white;
     font-weight: 400;
     font-size: 48px;
+}
+
+.select_pag, .select_par{
+    margin: 20px;
+    border-radius: 2px;
+    border: none;
+    width: 20vw;
+    box-shadow: 0 5px 6px #00000040;
+}
+
+.select_par_none{
+    display: none;
+}
+
+.input_cartao{
+    border-radius: 2px;
+    border: none;
+    width: 20vw;
+    position: relative;
+    left: 14.5px;
+    box-shadow: 0 5px 6px #00000040;
+}
+
+.info_div{
+    
+}
+
+.back_button, .env_button{
+    width: fit-content;
+    padding: 3px 23px 3px 23px;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: #274553;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px 6px #00000040;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.btns_div{
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.errorMessage{
+    color: white;
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.input_error_div{
+    display: flex;
+    flex-direction: column;
+}
+
+.confirmationMessage{
+    color: white;
+    font-size: 24px;
+    margin: 20px 0;
 }

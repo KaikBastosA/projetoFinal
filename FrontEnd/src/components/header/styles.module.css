@@ -60,3 +60,15 @@
     height: 50px;
     border-radius: 50%;
 }
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .icons {
+        flex-direction: row;
+        gap: 0;
+        margin-bottom: 1rem;
+    }
+}
