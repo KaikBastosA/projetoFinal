@@ -1,5 +1,4 @@
 import styles from './styles.module.css';
-import { Link } from 'react-router-dom';
 import instagram from '../../assets/instagram.svg';
 import facebook from '../../assets/facebook.svg';
 import linkedin from '../../assets/linkedin.svg';
@@ -21,9 +20,10 @@ export default function Footer() {
                         <p>contato@injunior.com.br</p>
                     </div>
                     <div className={styles.socialIcons}>
-                        <Link to="/instagram"><img src={instagram} alt="instagram-icon" /></Link>
-                        <Link to="/facebook"><img src={facebook} alt="facebook-icon" /></Link>
-                        <Link to="/linkedin"><img src={linkedin} alt="linkedin-icon" /></Link>
+                        <a href="https://www.instagram.com/injunioruff/" target="_blank" rel="noopener noreferrer"><img src={instagram} alt="instagram-icon" /></a>
+                        <a href="https://www.facebook.com/injunioruff" target="_blank" rel="noopener noreferrer"><img src={facebook} alt="instagram-icon" /></a>
+                        
+                        <a href="https://br.linkedin.com/company/in-junior" target="_blank" rel="noopener noreferrer"><img src={linkedin} alt="linkedin-icon" /></a>
                     </div>
                 </section>
                 <section className={styles.map}>
