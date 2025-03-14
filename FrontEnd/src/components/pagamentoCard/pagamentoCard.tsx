@@ -10,6 +10,7 @@ import CartContext from '../../context/CartContext';
 import { Pajama } from '../../types/Pajama';
 import api from '../../api/api';
 import { Link } from 'react-router-dom';
+import useCartStore from '../../stores/CartStore';
 
 interface PagamentoCardProps{
     modalPagIsOpen: boolean,
@@ -139,6 +140,11 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
     const [selectedParcelamentoOption,setSelectedParcelamentoOption] = useState<number>(1)
     
     
+    const { clearCart } = useCartStore()
+    function finalizarCompra() {
+        alert("Compra efetuada com sucesso!")
+        clearCart();
+    }
 
     return (
         <>
@@ -184,7 +190,7 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
                     </div>
                     <div className={s.btns_div}>
                         <button className={s.back_button} onClick={() => {closePagModal(); openDataModal()}}>{'< Voltar'}</button>
-                        <button className={s.env_button}>Enviar</button>
+                        <button onClick={finalizarCompra} className={s.env_button}>Enviar</button>
                     </div>
                     
                 </form>
@@ -210,5 +216,9 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
     )
 
 
+}
+
+function useCartStore(): { clearCart: any; } {
+    throw new Error('Function not implemented.');
 }
 
