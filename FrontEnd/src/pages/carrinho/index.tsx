@@ -35,7 +35,7 @@ export default function Carrinho() {
     }
 
     function shoppingButton() {
-        navigate('/pijamas/All')
+        navigate('/pijamas?gender=Todos')
     }
 
     return (

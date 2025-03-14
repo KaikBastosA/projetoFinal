@@ -6,9 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import api from '../../api/api'
 import Modal from 'react-modal'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function cadastro() {
-
+    const navigate = useNavigate();
     var form = useForm({
         resolver: zodResolver(userCreateSchema)
     })
@@ -27,6 +28,10 @@ export default function cadastro() {
                 console.log('Usuario criado com sucesso')
                 form.clearErrors()
                 setOpen(true)
+
+                setTimeout(() => {
+                    navigate('/');
+                }, 5000)
                 
             })
             .catch((err) => {
@@ -36,7 +41,7 @@ export default function cadastro() {
                 })
             })
         }catch{
-            console.log('erro')
+            console.log('Erro')
         }
     }
 
@@ -68,6 +73,7 @@ export default function cadastro() {
         <Modal isOpen={open} onRequestClose={closeModal} className={s.modalContent}>
             <div>
                 <h1>Usuário criado com sucesso!!</h1>
+                <p>Você será redirecionado para a página inicial em 5 segundos...</p>
             </div>
         </Modal>
         </>
