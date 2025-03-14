@@ -30,7 +30,7 @@ interface PajamaSale{
 
 export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataIsOpen, setPagIsOpen, dataObj}: PagamentoCardProps) {
 
-    console.log(dataObj)
+    
 
     var {cart, total} = useContext(CartContext)
     
@@ -44,7 +44,7 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
     
 
     
-    console.log(cart)
+    
 
 
     var form = useForm({
@@ -74,14 +74,15 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
     const [confirmationModalIsOpen, setConfirmationModalIsOpen] = useState(false);
 
     async function ValidateData(data: Pagamento){
+        console.log('entrei')
         try{
             var obj = {
                 buyer_name: dataObj.Nome,
                 cpf: dataObj.CPF, 
                 price: total, 
                 payment_method: selectedPagamentoOption, 
-                installments: selectedParcelamentoOption, 
-                card_number: data.Cartao, 
+                installments: selectedPagamentoOption === "cartao" ? selectedParcelamentoOption : 1, 
+                card_number: selectedPagamentoOption === "cartao" ? data.Cartao : undefined,
                 zip_code: dataObj.CEP, 
                 state: dataObj.UF, 
                 city: dataObj.Cidade,
@@ -131,8 +132,8 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
         {value: 6, label: 'x6'},
     ]
 
-    const [selectedPagamentoOption, setSelectedPagamentoOption] = useState()
-    const [selectedParcelamentoOption,setSelectedParcelamentoOption] = useState()
+    const [selectedPagamentoOption, setSelectedPagamentoOption] = useState<string>()
+    const [selectedParcelamentoOption,setSelectedParcelamentoOption] = useState<number>()
     
     
 
@@ -153,18 +154,29 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
                         <Select placeholder='Forma de pagamento'
                             options={pagamento}
                             className={s.select_pag}
-                            onChange={(obj: any) => {setSelectedPagamentoOption(obj?.value)}}                            
+                            onChange={(obj: any) => {
+                                setSelectedPagamentoOption(obj?.value);
+                                
+                            }}         
+                            defaultValue={pagamento[0].value}                   
                         ></Select>
+                        
+
                         <Select placeholder='Parcelamento x6'
                             options={parcelamento}
                             className={selectedPagamentoOption === "pix"? s.select_par_none : s.select_par}
                             onChange={(obj: any) => {setSelectedParcelamentoOption(obj?.value)}}
                             defaultValue={parcelamento[0].value}
                         ></Select>
-                        <div className={s.input_error_div}>
-                            <input type="text" placeholder='Número do cartão' className={s.input_cartao} style={selectedPagamentoOption === "pix" ? {display: 'none'} : {}} {...form.register("Cartao")}/>
-                            {form.formState.errors.Cartao && selectedPagamentoOption === "cartao" && <span className={s.errorMessage}>{form.formState.errors.Cartao.message}</span>}
-                        </div>
+
+                        
+                        {selectedPagamentoOption === "cartao" && (
+                            <div className={s.input_error_div}>
+                                <input type="text" placeholder='Número do cartão' className={s.input_cartao}  {...form.register("Cartao")}/>
+                                {form.formState.errors.Cartao && selectedPagamentoOption === "cartao" && (<span className={s.errorMessage}>{form.formState.errors.Cartao.message}</span>)}
+                            </div>
+                        )}
+                        
                         
                     </div>
                     <div className={s.btns_div}>
