@@ -20,7 +20,8 @@ interface PagamentoCardProps{
 }
 
 interface Pagamento{
-    Cartao: string
+    Cartao?: string,
+    metodoPag: string
 }
 
 interface PajamaSale{
@@ -76,6 +77,7 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
 
     async function ValidateData(data: Pagamento){
         console.log('entrei')
+        
         try{
             var obj = {
                 buyer_name: dataObj.Nome,
@@ -133,8 +135,8 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
         {value: 6, label: 'x6'},
     ]
 
-    const [selectedPagamentoOption, setSelectedPagamentoOption] = useState<string>()
-    const [selectedParcelamentoOption,setSelectedParcelamentoOption] = useState<number>()
+    const [selectedPagamentoOption, setSelectedPagamentoOption] = useState<string>("")
+    const [selectedParcelamentoOption,setSelectedParcelamentoOption] = useState<number>(1)
     
     
 
@@ -158,10 +160,10 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
                             onChange={(obj: any) => {
                                 setSelectedPagamentoOption(obj?.value);
                                 
-                            }}         
+                            }}             
                             defaultValue={pagamento[0].value}                   
                         ></Select>
-                        
+                        <input style={{backgroundColor: '#4E8098', height: '1px', width:'1px'}} disabled={true} type="text" value={selectedPagamentoOption} {...form.register("metodoPag")}/>
 
                         <Select placeholder='Parcelamento x6'
                             options={parcelamento}
