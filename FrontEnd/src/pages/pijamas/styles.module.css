@@ -1,67 +1,154 @@
+/* Estilização do container principal */
+
 .container {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    background: url('../../assets//zzz-blue-background.svg') no-repeat center;
+    background-size: cover;
+}
+
+/* Estilização do container azul e dos filtros */
+
+.blueContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #72A8C1;
+    width: 100%;
+    height: 16rem;
+    margin-bottom: 8rem;
 }
 
 .searchBar {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    width: 80%;
+    position: relative;
 }
 
 .searchBar input {
-    flex: 1;
+    font-family: 'Roboto' sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 5%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 1.5rem;
+    padding: 0.8rem;
+    width: 100%;
 }
 
 .searchBar img {
     margin-left: 10px;
+    background-color: #274553;
+    border-radius: 50%;
+    padding: 0.5rem;
     cursor: pointer;
+    margin-left: 0;
+    position: absolute;
+    right: 2px;
 }
 
 .filters {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    padding: 0 0.5rem;
+    width: 80%;
 }
 
 .filters select {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.56rem;
+    color: #274553;
+    width: 20rem;
+    background-color: #97C3D8;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 4px;
+    border-left: 0.625rem solid #4E8098;
 }
+
+
+
+/* Estilização dos pijamas */
 
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    justify-items: center;
+    gap: 5rem 0;
 }
+
+/* Estilização da paginação */
 
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin: 3rem;
+    gap: 1rem;
 }
 
-.pagination button {
-    padding: 10px;
-    margin: 0 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
+.pageButton {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    font-size: 2rem;
+    padding: 1rem;
+    border: none;
+    background-color: transparent;
+    color: #274553;
+    border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.pagination button:disabled {
-    background-color: #ccc;
+.pageButton:hover {
+    background-color: #72A8C1;
+    color: white;
+}
+
+.activePage {
+    background-color: #72A8C1;
+    color: white;
+    font-weight: bold;
+}
+
+.ellipsis {
+    padding: 10px;
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.arrowButton {
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: #274553;
+    border-radius: 50%;
+    width:40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.arrowButton:hover {
+    background-color: #274553;
+    color: white;
+}
+
+.arrowButton:disabled {
+    color: #ccc;
     cursor: not-allowed;
-}
-
-.pagination span {
-    font-size: 16px;
 }

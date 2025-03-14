@@ -60,7 +60,7 @@ export default function PajamasPage() {
         pijama.id === id ? { ...pijama, favorite: !pijama.favorite } : pijama
       )
     );
-    
+
     axios
       .patch(`http://localhost:3333/pajamas/${id}/favorite`)
       .catch((error) => console.error("Erro ao favoritar pijama:", error));
@@ -73,36 +73,37 @@ export default function PajamasPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Pesquisar..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <img src={lupaIcon} alt="Buscar" className={styles.searchIcon} />
-      </div>
+      <div className={styles.blueContainer}>
+        <div className={styles.searchBar}>
+          <input
+            type="text"
+            placeholder="Pesquise pelo produto..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <img src={lupaIcon} alt="Buscar" className={styles.searchIcon} />
+        </div>
 
-      <div className={styles.filters}>
-        <select onChange={(e) => setGender(e.target.value)}>
-          <option>Todos</option>
-          <option>Unissex</option>
-          <option>Masculino</option>
-          <option>Feminino</option>
-          <option>Família</option>
-        </select>
-        <select onChange={(e) => setType(e.target.value)}>
-          <option>Todos</option>
-          <option>Adulto</option>
-          <option>Infantil</option>
-        </select>
-        <select onChange={(e) => setSeason(e.target.value)}>
-          <option>Todos</option>
-          <option>Verão</option>
-          <option>Inverno</option>
-        </select>
+        <div className={styles.filters}>
+          <select onChange={(e) => setGender(e.target.value)}>
+            <option>Todos</option>
+            <option>Unissex</option>
+            <option>Masculino</option>
+            <option>Feminino</option>
+            <option>Família</option>
+          </select>
+          <select onChange={(e) => setType(e.target.value)}>
+            <option>Todos</option>
+            <option>Adulto</option>
+            <option>Infantil</option>
+          </select>
+          <select onChange={(e) => setSeason(e.target.value)}>
+            <option>Todos</option>
+            <option>Verão</option>
+            <option>Inverno</option>
+          </select>
+        </div>
       </div>
-
       <div className={styles.grid}>
         {currentItems.map((pijama) => (
           <PijamaCard key={pijama.id} pijama={pijama} onToggleFavorite={toggleFavorite} />
@@ -110,16 +111,52 @@ export default function PajamasPage() {
       </div>
 
       <div className={styles.pagination}>
-        <button disabled={currentPage === 1} onClick={() => setCurrentPage((prev) => prev - 1)}>
-          &lt;
+  {/* Botão para página anterior */}
+  <button
+    className={styles.arrowButton}
+    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+    disabled={currentPage === 1}
+  >
+    &lt;
+  </button>
+
+  {/* Páginas numeradas */}
+  {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => {
+    if (
+      page === 1 ||
+      page === totalPages ||
+      page === currentPage ||
+      Math.abs(page - currentPage) === 1
+    ) {
+      return (
+        <button
+          key={page}
+          className={`${styles.pageButton} ${
+            page === currentPage ? styles.activePage : ""
+          }`}
+          onClick={() => setCurrentPage(page)}
+        >
+          {page}
         </button>
-        <span>
-          {currentPage} / {totalPages}
-        </span>
-        <button disabled={currentPage === totalPages} onClick={() => setCurrentPage((prev) => prev + 1)}>
-          &gt;
-        </button>
-      </div>
+      );
+    } else if (
+      (page === currentPage - 2 && page !== 1) ||
+      (page === currentPage + 2 && page !== totalPages)
+    ) {
+      return <span key={page} className={styles.ellipsis}>...</span>;
+    }
+    return null;
+  })}
+
+  {/* Botão para próxima página */}
+  <button
+    className={styles.arrowButton}
+    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+    disabled={currentPage === totalPages}
+  >
+    &gt;
+  </button>
+</div>
     </div>
   );
 }
