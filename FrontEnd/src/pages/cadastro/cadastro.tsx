@@ -31,7 +31,7 @@ export default function cadastro() {
 
                 setTimeout(() => {
                     navigate('/');
-                }, 5000)
+                }, 3000)
                 
             })
             .catch((err) => {
@@ -73,7 +73,7 @@ export default function cadastro() {
         <Modal isOpen={open} onRequestClose={closeModal} className={s.modalContent}>
             <div>
                 <h1>Usuário criado com sucesso!!</h1>
-                <p>Você será redirecionado para a página inicial em 5 segundos...</p>
+                <p>Você será redirecionado para a página inicial em 3 segundos...</p>
             </div>
         </Modal>
         </>

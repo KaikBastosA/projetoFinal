@@ -51,7 +51,7 @@ export default function Favoritos() {
     }
 
     function shoppingButton() {
-        navigate('/pijamas/All')
+        navigate('/pijamas?gender=Todos')
     }
 
     function handleToggleFavorite(id: string) {
