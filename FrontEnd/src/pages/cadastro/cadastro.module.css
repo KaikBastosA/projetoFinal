@@ -7,7 +7,6 @@
     font-size: 48px;
 }
 
-
 .main_div{
     position: relative;
     top: 5vw;
@@ -46,10 +45,21 @@
     border-radius: 5px;
     margin-top: 5px;
     display: inline-block;
-  }
+}
+
+.modalContent {
+    background-color: #74010B;
+    color: white;
+    padding: 20px;
+    border-radius: 2px;
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+    position: relative;
+    top: 25vh;
+}
 
 @media only screen and (max-width: 800px) {
-    
     .main_div{
         position: relative;
         top: 5vw;
