@@ -55,8 +55,11 @@ export default function Favoritos() {
     }
 
     function handleToggleFavorite(id: string) {
-        // Adicione a lógica para alternar o favorito
-        console.log("Toggling favorite for:", id);
+        api.patch(`/pajama/updateFavorite/${id}`, { favorite: false })
+            .then(() => {
+                fetchFavorites();
+            })
+            .catch(error => console.error("Erro ao atualizar favorito:", error));
     }
 
     return(
