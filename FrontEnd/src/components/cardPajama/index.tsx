@@ -3,6 +3,7 @@ import emptyHeart from '../../assets/empty-Heart.svg';
 import fullHeart from '../../assets/full-heart.svg';
 import saleIcon from '../../assets/saleIcon.svg';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 interface Pijama {
   id: string;
@@ -37,6 +38,20 @@ export default function PijamaCard({ pijama, onToggleFavorite }: PijamaCardProps
   // Preço parcelado em 6x
   const parcelado = discountedPrice / 6;
 
+  // Função para alternar o favorito
+  const handleFavoriteToggle = async () => {
+    try {
+      // Atualizando o estado do favorito no backend
+      await axios.patch(`http://localhost:3333/pajama/updateFavorite/${pijama.id}`, {
+        favorite: !pijama.favorite,
+      });
+      
+      onToggleFavorite(pijama.id);
+    } catch (error) {
+      console.error("Erro ao atualizar favorito:", error);
+    }
+  };
+
   return (
     <div className={styles.cardContainer} onClick={() => navigate(`/pijama/${pijama.id}`)}>
       {/* Icones de favorito e promoção */}
@@ -44,10 +59,7 @@ export default function PijamaCard({ pijama, onToggleFavorite }: PijamaCardProps
         {/* Ícone de Favorito (sempre visível) */}
         <button
           className={styles.iconButton}
-          onClick={() => {
-            console.log('Favorito clicado:', pijama.id);
-            onToggleFavorite(pijama.id);
-          }}
+          onClick={handleFavoriteToggle}
           aria-label="Favoritar"
         >
           <img
