@@ -91,3 +91,18 @@
     cursor: none;
     
   }
+
+.passwordContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.showPasswordButton {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    color: #A31621;
+}

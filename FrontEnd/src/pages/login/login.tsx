@@ -7,13 +7,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import api from '../../api/api'
 import { UserLogin, userLoginSchema } from '../../types/UserLoginSchema'
 import { useState } from 'react'
-
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
 
 
 export default function login() {
     const [errorMessage, setErrorMessage] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     
     var nav = useNavigate()
 
@@ -22,7 +23,7 @@ export default function login() {
     })
 
     async function ValidateUser(data: UserLogin) {
-        console.log('oiiii')
+        
         
         try{
             
@@ -66,8 +67,8 @@ export default function login() {
         }
         
 
-
     }
+
 
 
     return (
@@ -82,7 +83,12 @@ export default function login() {
 
                 {form.formState.errors.EmailOuUsuario && <span className={s.errorMessage}>{form.formState.errors.EmailOuUsuario.message}</span>}
 
-                <input className={s.input_log} type="text" placeholder='Senha'  {...form.register("Senha")}/>
+                <div className={s.passwordContainer}>
+                    <input className={s.input_log} type={showPassword ? 'text' : 'password'} placeholder='Senha'  {...form.register("Senha")}/>
+                    <button type="button" className={s.showPasswordButton} onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <FaEye /> : <FaEyeSlash />}
+                    </button>
+                </div>
 
                 <Link className={s.senha_btn} to=''>Esqueci minha senha</Link>
 
