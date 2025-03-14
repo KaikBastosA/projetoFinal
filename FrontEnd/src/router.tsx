@@ -6,7 +6,7 @@ import Login from './pages/login/login.tsx'
 import FeedBack from "./pages/feedBack/feedBack.tsx";
 import RegLayout from './layouts/regsLayout/regsLayout.tsx'
 import Cadastro from './pages/cadastro/cadastro.tsx'
-import Pijamas from "./pages/pijamas/pijamas.tsx";
+import Pijamas from "./pages/pijamas/index.tsx";
 import Carrinho from "./pages/carrinho";
 import Favoritos from "./pages/favoritos";
 
