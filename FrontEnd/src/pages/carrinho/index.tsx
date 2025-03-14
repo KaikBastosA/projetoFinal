@@ -5,8 +5,11 @@ import favoritoNaoClicado from '../../assets/empty-Heart.svg'
 import useCartStore from "../../stores/CartStore";
 import styles from './styles.module.css'
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DadosCard from "../../components/dadosCard/dadosCard";
+import CartContext from "../../context/CartContext";
+
+
 
 export default function Carrinho() {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -14,6 +17,7 @@ export default function Carrinho() {
     const navigate = useNavigate() 
     const [favoritoAtivo, setFavoritoAtivo] = useState(false)
     const [total, setTotal] = useState(0)
+    
 
     useEffect(() => {
         const novoTotal = cart.reduce(
@@ -66,6 +70,8 @@ export default function Carrinho() {
                 </>
             )}
         </div>
-        <DadosCard modalDataIsOpen={modalIsOpen} setDataIsOpen={setIsOpen}></DadosCard>
+        <CartContext.Provider value={{cart, total}}>
+            <DadosCard modalDataIsOpen={modalIsOpen} setDataIsOpen={setIsOpen}></DadosCard>
+        </CartContext.Provider>
         </>
 )}
