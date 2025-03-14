@@ -1,110 +1,125 @@
-import { useParams } from "react-router-dom"
-import s from './pijamas.module.css'
-import Select from 'react-select'
 import { useEffect, useState } from "react";
-import Lupa from '../../assets/Lupa.svg'
+import axios from "axios";
+import PijamaCard from "../../components/cardPajama";
+import styles from "./styles.module.css";
+import lupaIcon from "../../assets/lupa.svg";
 
-export default function Pijamas() {
+interface Pijama {
+  id: string;
+  name: string;
+  gender: string;
+  type: string;
+  season: string;
+  description: string;
+  image: string;
+  price: number;
+  favorite: boolean;
+  on_sale: boolean;
+  sale_percent: number;
+}
 
-    var styles = {
-        control: (baseStyles: any) => ({
-            ...baseStyles,
-            backgroundColor: '#97C3D8',
-            border: 'none',
-            boxShadow: '0px 4px 4px 0 #00000040',
-            paddingLeft: '20px'
-        }),
-        placeholder: (baseStyles: any) => ({
-            ...baseStyles,
-            color: 'black',
-            fontWeight: 500,
-            fontSize: '20px',
-            
-        }),
-        singleValue: (baseStyles: any) => ({
-            ...baseStyles,
-            color: 'black',
-            fontWeight: 500,
-            fontSize: '20px',
-            
-        }),
-        dropdownIndicator: (baseStyles: any) => ({
-            ...baseStyles,
-            color: '#274553',
-        })
-      }
+export default function PajamasPage() {
+  const [pijamas, setPijamas] = useState<Pijama[]>([]);
+  const [filteredPijamas, setFilteredPijamas] = useState<Pijama[]>([]);
+  const [search, setSearch] = useState("");
+  const [gender, setGender] = useState("Todos");
+  const [type, setType] = useState("Todos");
+  const [season, setSeason] = useState("Todos");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
+  useEffect(() => {
+    axios.get("http://localhost:3333/all-pajamas").then((response) => {
+      setPijamas(response.data as Pijama[]);
+      setFilteredPijamas(response.data as Pijama[]);
+    });
+  }, []);
 
-    var genero = [
-    { value: 'Todos', label: 'Todos' },
-    { value: 'Unissex', label: 'Unissex' },
-    { value: 'Masculino', label: 'Masculino' },
-    { value: 'Feminino', label: 'Feminino' },
-    { value: 'Família', label: 'Família' }
-    ];
+  useEffect(() => {
+    let filtered = pijamas.filter((pijama) =>
+      pijama.name.toLowerCase().includes(search.toLowerCase())
+    );
 
-    var tipo = [
-        { value: 'Todos', label: 'Todos' },
-        { value: 'Adulto', label: 'Adulto' },
-        { value: 'Infantil', label: 'Infantil' }
-    ]
+    if (gender !== "Todos") {
+      filtered = filtered.filter((pijama) => pijama.gender === gender);
+    }
+    if (type !== "Todos") {
+      filtered = filtered.filter((pijama) => pijama.type === type);
+    }
+    if (season !== "Todos") {
+      filtered = filtered.filter((pijama) => pijama.season === season);
+    }
 
-    var estacao =[
-        {value: 'Todos', label: 'Todos'},
-        {value: 'Verao', label: 'Verao'},
-        {value: 'Inverno', label: 'Inverno'}
-    ]
+    setFilteredPijamas(filtered);
+    setCurrentPage(1);
+  }, [search, gender, type, season, pijamas]);
 
-    const [selectedGeneroOption, setSelectedGeneroOption] = useState<string>('Todos');
-    const [selectedTipoOption, setSelectedTipoOption] = useState<string>('Todos');
-    const [selectedEstacaoOption, setSelectedEstacaoOption] = useState<string>('Todos');
-    var typeParam = useParams().type
-
-    useEffect(() => {
-        
-    }, [])
-
-    console.log(selectedGeneroOption)
-    console.log(selectedTipoOption)
-    console.log(selectedEstacaoOption)
+  const toggleFavorite = (id: string) => {
+    setPijamas((prevPijamas) =>
+      prevPijamas.map((pijama) =>
+        pijama.id === id ? { ...pijama, favorite: !pijama.favorite } : pijama
+      )
+    );
     
-    return (
-        <div className={s.main_div}>
+    axios
+      .patch(`http://localhost:3333/pajamas/${id}/favorite`)
+      .catch((error) => console.error("Erro ao favoritar pijama:", error));
+  };
 
-            <div className={s.filter_div}>
-                <div className={s.input_div}>
-                    <input className={s.input} type="text" name="" id="" placeholder="Pesquise pelo produto"/>
-                    <button className={s.input_btn}><img src={Lupa}></img></button>
-                </div>
-                <div className={s.dropdown_div}>
-                    <Select 
-                        onChange={(obj: any) => {setSelectedGeneroOption(obj?.value)}} 
-                        placeholder='Gênero' 
-                        className={s.dropdown_menu} 
-                        options={genero} 
-                        isDisabled={typeParam === 'Masculino' || typeParam === 'Feminino'}
-                        styles={styles}
-                    ></Select>
-                    <Select 
-                        onChange={(obj: any) => {setSelectedTipoOption(obj?.value)}}
-                        placeholder="Tipo" 
-                        className={s.dropdown_menu} 
-                        options={tipo} 
-                        isDisabled={typeParam === 'Infantil'}
-                        styles={styles}
-                    ></Select>
-                    <Select 
-                        onChange={(obj: any) => {setSelectedEstacaoOption(obj?.value)}}
-                        placeholder='Estação' 
-                        className={s.dropdown_menu} 
-                        options={estacao}
-                        styles={styles}
-                    ></Select>
-                </div>
-            </div>
-            <div>
+  const lastIndex = currentPage * itemsPerPage;
+  const firstIndex = lastIndex - itemsPerPage;
+  const currentItems = filteredPijamas.slice(firstIndex, lastIndex);
+  const totalPages = Math.ceil(filteredPijamas.length / itemsPerPage);
 
-            </div>
-        </div>
-    )
+  return (
+    <div className={styles.container}>
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          placeholder="Pesquisar..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <img src={lupaIcon} alt="Buscar" className={styles.searchIcon} />
+      </div>
+
+      <div className={styles.filters}>
+        <select onChange={(e) => setGender(e.target.value)}>
+          <option>Todos</option>
+          <option>Unissex</option>
+          <option>Masculino</option>
+          <option>Feminino</option>
+          <option>Família</option>
+        </select>
+        <select onChange={(e) => setType(e.target.value)}>
+          <option>Todos</option>
+          <option>Adulto</option>
+          <option>Infantil</option>
+        </select>
+        <select onChange={(e) => setSeason(e.target.value)}>
+          <option>Todos</option>
+          <option>Verão</option>
+          <option>Inverno</option>
+        </select>
+      </div>
+
+      <div className={styles.grid}>
+        {currentItems.map((pijama) => (
+          <PijamaCard key={pijama.id} pijama={pijama} onToggleFavorite={toggleFavorite} />
+        ))}
+      </div>
+
+      <div className={styles.pagination}>
+        <button disabled={currentPage === 1} onClick={() => setCurrentPage((prev) => prev - 1)}>
+          &lt;
+        </button>
+        <span>
+          {currentPage} / {totalPages}
+        </span>
+        <button disabled={currentPage === totalPages} onClick={() => setCurrentPage((prev) => prev + 1)}>
+          &gt;
+        </button>
+      </div>
+    </div>
+  );
 }

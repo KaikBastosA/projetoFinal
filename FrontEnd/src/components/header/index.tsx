@@ -14,10 +14,10 @@ export default function Header() {
 
             <nav className={styles.nav}>
                 <ul>
-                    <li><Link to="/pijamas/All">PIJAMAS</Link></li>
-                    <li><Link to="/pijamas/Feminino">FEMININO</Link></li>
-                    <li><Link to="/pijamas/Masculino">MASCULINO</Link></li>
-                    <li><Link to="/pijamas/Infantil">INFANTIL</Link></li>
+                    <li><Link to="/pijamas?gender=Todos">PIJAMAS</Link></li>
+                    <li><Link to="/pijamas?gender=Feminino">FEMININO</Link></li>
+                    <li><Link to="/pijamas?gender=Masculino">MASCULINO</Link></li>
+                    <li><Link to="/pijamas?type=Infantil">INFANTIL</Link></li>
                 </ul>
             </nav>
             <div className={styles.icons}>
