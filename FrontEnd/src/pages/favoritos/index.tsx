@@ -85,7 +85,7 @@ export default function Favoritos() {
                         className={styles.swiperContainer}
                         spaceBetween={5}
                         breakpoints={{
-                            1920: { slidesPerView: 10 }, // Telas muito grandes (Full HD e superiores)
+                            1920: { slidesPerView: 8 }, // Telas muito grandes (Full HD e superiores)
                             1600: { slidesPerView: 6 }, // Laptops grandes
                             1440: { slidesPerView: 6 }, // Laptops médios
                             1280: { slidesPerView: 5 }, // Telas um pouco menores

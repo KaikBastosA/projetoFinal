@@ -119,6 +119,7 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
 
     function closeConfirmationModal() {
         setConfirmationModalIsOpen(false);
+        finalizarCompra()
     }
 
 
@@ -142,7 +143,7 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
     
     const { clearCart } = useCartStore()
     function finalizarCompra() {
-        alert("Compra efetuada com sucesso!")
+        //alert("Compra efetuada com sucesso!")
         clearCart();
     }
 
@@ -190,7 +191,7 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
                     </div>
                     <div className={s.btns_div}>
                         <button className={s.back_button} onClick={() => {closePagModal(); openDataModal()}}>{'< Voltar'}</button>
-                        <button onClick={finalizarCompra} className={s.env_button}>Enviar</button>
+                        <button className={s.env_button}>Enviar</button>
                     </div>
                     
                 </form>
@@ -218,7 +219,4 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
 
 }
 
-function useCartStore(): { clearCart: any; } {
-    throw new Error('Function not implemented.');
-}
 
