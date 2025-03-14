@@ -18,20 +18,29 @@ export default function feedback() {
     const [rating, setRating] = useState(0);
     
     async function onSubmit(data: Feedback){
-        
-        await api.post('/feedbacks', {
-            name: data.nome,
-            description: data.desc,
-            rating
-        }).then((resp) => {
-            setOpen(true)
+        try{
+            await api.post('/feedbacks', {
+                name: data.nome,
+                description: data.desc,
+                rating
+            }).then((resp) => {
+                setOpen(true)
+                form.reset()
+                form.clearErrors()
+                console.log(resp.data)
+            }
+    
+            ).catch((err) => {
+                console.log('erro: ', err)
+                form.setError('root', {
+                    type: 'server',
+                    message: 'Erro de servidor ao criar feedback'
+                })
+            })
+        }catch(err){
             
-            console.log(resp.data)
         }
-
-        ).catch((err) => {
-            console.log('erro: ', err)
-        })
+        
 
     }
 
@@ -75,7 +84,8 @@ export default function feedback() {
                         ))}
                     </div>
                     
-                    <button className={s.enviar_btn}>Enviar</button>
+                    <button className={!form.formState.isSubmitting ? s.enviar_btn : s.enviar_btn_sub}>{form.formState.isSubmitting ? 'Enviando...' : 'Enviar'}</button>
+                    {form.formState.errors.root && <span className={s.errorMessage}>{form.formState.errors.root.message}</span>}
                 </form>
             </Form>
             <Modal isOpen={open} onRequestClose={closeModal} className={s.modalContent}>

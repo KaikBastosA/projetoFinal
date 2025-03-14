@@ -14,7 +14,7 @@ export const userCreateSchema = z.object({
     return value.Senha == value.ConfirmaSenha
 }, {
     message: "Senhas não batem",
-    path: ["confirm"],
+    path: ["ConfirmaSenha"],
 })
 
 export type UserCreate = z.infer<typeof userCreateSchema>

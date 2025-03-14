@@ -62,7 +62,7 @@ export default function login() {
             
             form.setError('root', {
                 type: 'server',
-                message: 'Erro ao fazer login'
+                message: 'Erro de servidor ao fazer login'
             })
         }
         
