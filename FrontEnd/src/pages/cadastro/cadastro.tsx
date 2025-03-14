@@ -4,6 +4,8 @@ import { UserCreate, userCreateSchema } from '../../types/UserCreateSchema'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import api from '../../api/api'
+import Modal from 'react-modal'
+import { useState } from 'react'
 
 export default function cadastro() {
 
@@ -13,7 +15,6 @@ export default function cadastro() {
 
     async function CreateUser(data: UserCreate) {
         try{
-            
             await api.post('/users', {
                 name: data.Nome,
                 username: data.Usuario,
@@ -22,28 +23,31 @@ export default function cadastro() {
             })
             .then((resp) => {
                 console.log(resp.data);
+                form.reset()
+                console.log('Usuario criado com sucesso')
+                form.clearErrors()
+                setOpen(true)
+                
             })
             .catch((err) => {
-                console.log(err)
+                form.setError('root', {
+                    type: 'server',
+                    message: `Erro ao fazer login: ${err.response.data.message}` 
+                })
             })
-
-            console.log('Usuario criado com sucesso')
-            
         }catch{
-            
-            form.setError('root', {
-                type: 'server',
-                message: 'Erro ao fazer login'
-            })
+            console.log('erro')
         }
-        
-
-
     }
 
+    const [open, setOpen] = useState(false)
 
+    function closeModal(){
+        setOpen(false)
+    }
 
     return (
+        <>
         <Form>
             <h1 className={s.title}>Registre-se</h1>
             <form action="" className={s.form} onSubmit={form.handleSubmit(CreateUser)}>
@@ -58,11 +62,14 @@ export default function cadastro() {
                 <input type="text" placeholder='Confirmar senha' {...form.register("ConfirmaSenha")}/>
                 {form.formState.errors.ConfirmaSenha && <span className={s.errorMessage}>{form.formState.errors.ConfirmaSenha.message}</span>}
                 <button className={s.reg_btn}>Registrar</button>
+                {form.formState.errors.root && <span className={s.errorMessage}>{form.formState.errors.root.message}</span>}
             </form>
         </Form>
-        
-                
-            
-    
+        <Modal isOpen={open} onRequestClose={closeModal} className={s.modalContent}>
+            <div>
+                <h1>Usuário criado com sucesso!!</h1>
+            </div>
+        </Modal>
+        </>
     )
 }
