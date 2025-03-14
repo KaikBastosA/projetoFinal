@@ -6,12 +6,15 @@
 .title{
     font-size: 48px;
     color: white;
+    font-family: 'Numans';
+    font-weight: 400;
 }
 
 .text{
     color: white;
     word-wrap: break-word;
-    width: 10vw;
+    width: 12vw;
+    font-family: 'Roboto Serif';
 }
 
 .star1, .star2, .star3, .star4, .star5{
@@ -54,4 +57,14 @@
     margin: auto;
     position: relative;
     top: 25vh;
+}
+
+.input::placeholder{
+    font-family: 'Roboto';
+    font-size: 20px;
+}
+
+.desc::placeholder{
+    font-family: 'Roboto';
+    font-size: 20px;
 }

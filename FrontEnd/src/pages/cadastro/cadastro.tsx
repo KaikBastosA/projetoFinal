@@ -51,15 +51,15 @@ export default function cadastro() {
         <Form>
             <h1 className={s.title}>Registre-se</h1>
             <form action="" className={s.form} onSubmit={form.handleSubmit(CreateUser)}>
-                <input type="text" placeholder="Nome" {...form.register("Nome")}/>
+                <input className={s.input} type="text" placeholder="Nome" {...form.register("Nome")}/>
                 {form.formState.errors.Nome && <span className={s.errorMessage}>{form.formState.errors.Nome.message}</span>}
-                <input type="text" placeholder="Nome de Usuário" {...form.register("Usuario")}/>
+                <input className={s.input} type="text" placeholder="Nome de Usuário" {...form.register("Usuario")}/>
                 {form.formState.errors.Usuario && <span className={s.errorMessage}>{form.formState.errors.Usuario.message}</span>}
-                <input type="text" placeholder="Email" {...form.register("Email")}/>
+                <input className={s.input} type="text" placeholder="Email" {...form.register("Email")}/>
                 {form.formState.errors.Email && <span className={s.errorMessage}>{form.formState.errors.Email.message}</span>}
-                <input type="text" placeholder="Senha" {...form.register("Senha")}/>
+                <input className={s.input} type="text" placeholder="Senha" {...form.register("Senha")}/>
                 {form.formState.errors.Senha && <span className={s.errorMessage}>{form.formState.errors.Senha.message}</span>}
-                <input type="text" placeholder='Confirmar senha' {...form.register("ConfirmaSenha")}/>
+                <input className={s.input} type="text" placeholder='Confirmar senha' {...form.register("ConfirmaSenha")}/>
                 {form.formState.errors.ConfirmaSenha && <span className={s.errorMessage}>{form.formState.errors.ConfirmaSenha.message}</span>}
                 <button className={s.reg_btn}>Registrar</button>
                 {form.formState.errors.root && <span className={s.errorMessage}>{form.formState.errors.root.message}</span>}
