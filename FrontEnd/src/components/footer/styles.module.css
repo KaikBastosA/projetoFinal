@@ -56,3 +56,26 @@
 .map{
     box-shadow: 0 10px 0.5rem 0.1rem rgba(0, 0, 0, 0.15);
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .footerContent{
+        padding: 0 5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .footerContent{
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        text-align: center;
+    }
+    .socialIcons{
+        width: 100%;
+    }
+    .map{
+        margin-bottom: 2rem;
+    }
+}
