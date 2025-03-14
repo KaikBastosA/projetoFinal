@@ -28,7 +28,7 @@ const router = createBrowserRouter([
                 element: <Carrinho/>
             },
             {
-                path: 'pijamas/:type',
+                path: 'pijamas',
                 element: <Pijamas></Pijamas>
             },
             {
