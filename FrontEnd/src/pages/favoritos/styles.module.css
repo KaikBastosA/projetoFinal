@@ -62,6 +62,9 @@
     background-size: cover;
     overflow: hidden;
     padding: 5rem 3rem 10rem 3rem;
+
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 75%, rgba(0,0,0,0));
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 75%, rgba(0,0,0,0));
 }
 
 .swiperContainer{
@@ -70,4 +73,7 @@
     position: relative;
 }
 
+.swiper-slide {
+    transition: opacity 0.5s ease-out;
+}
 
