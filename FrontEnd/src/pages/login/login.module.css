@@ -11,11 +11,12 @@
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 48px;
+    font-family: 'Numans';
 }
 
 .text{
     color: white;
-    font-family: var(--secondary-Font);
+    font-family: 'Roboto Serif';
     /* margin-bottom: 20px; */
     word-wrap: break-word;
     width: 60%;
@@ -23,9 +24,11 @@
     
 }
 
-.input_log{
-    margin: 10px;
-    width: 20vw;
+
+
+.input_log::placeholder{
+   font-family: 'Roboto';
+   font-size: 20px;
 
 }
 
@@ -49,7 +52,7 @@
     box-shadow: 0 5px 6px #00000040;
     border: none;
     border-radius: 10px;
-    font-family: var(--quaternary-Font);
+    font-family: 'Montserrat';
 }
 
 .entrar_btn{
@@ -66,6 +69,7 @@
 
 .cadastrar_link{
     color: white;
+    font-family: 'Montserrat';
 }
 
 .errorMessage {

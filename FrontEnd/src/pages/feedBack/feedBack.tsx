@@ -59,7 +59,7 @@ export default function feedback() {
                 <h1 className={s.title}>FeedBack</h1>
                 <p className={s.text}>Fale um pouco sobre sua experiência na nossa loja!</p>
                 <form className={s.feedback_form} onSubmit={form.handleSubmit(onSubmit)}>
-                    <input type="text" placeholder='Nome completo' {...form.register("nome")}/>
+                    <input className={s.input} type="text" placeholder='Nome completo' {...form.register("nome")}/>
                     {form.formState.errors.nome && <span className={s.errorMessage}>{form.formState.errors.nome.message}</span>}
                     <textarea rows={10} className={s.desc} placeholder='Descrição detalhada' {...form.register("desc")}/>
                     {form.formState.errors.desc && <span className={s.errorMessage}>{form.formState.errors.desc.message}</span>}

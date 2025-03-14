@@ -24,6 +24,7 @@
     color: white;
     font-weight: 400;
     font-size: 48px;
+    font-family: 'Numans';
 }
 
 .inputs_sub_div{
@@ -78,4 +79,19 @@
 
 .testeg{
     display: flex;
+}
+
+.input::placeholder{
+    font-family: 'Roboto';
+    font-size: 20px;
+}
+
+.min_input::placeholder{
+    font-family: 'Roboto';
+    font-size: 20px;
+}
+
+.med_input::placeholder{
+    font-family: 'Roboto';
+    font-size: 20px;
 }

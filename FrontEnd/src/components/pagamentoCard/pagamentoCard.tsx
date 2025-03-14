@@ -9,6 +9,7 @@ import { PaymentSchema } from '../../types/paymentSchema';
 import CartContext from '../../context/CartContext';
 import { Pajama } from '../../types/Pajama';
 import api from '../../api/api';
+import { Link } from 'react-router-dom';
 
 interface PagamentoCardProps{
     modalPagIsOpen: boolean,
@@ -194,12 +195,12 @@ export default function PagamentoCard({modalDataIsOpen, modalPagIsOpen, setDataI
             isOpen={confirmationModalIsOpen}
             onRequestClose={closeConfirmationModal}
             contentLabel="Confirmation Modal"
-            className={s.modal}
+            className={s.modal_conf}
         >
             <div className={s.inputs_main_div}>
-                <h2 className={s.title}>Pagamento Confirmado</h2>
-                <p className={s.confirmationMessage}>Seu pagamento foi realizado com sucesso!</p>
-                <button className={s.env_button} onClick={closeConfirmationModal}>Fechar</button>
+                <h2 className={s.title}>Sua compra foi concluída</h2>
+                <p className={s.confirmationMessage}>Obrigado por comprar conosco!</p>
+                <Link onClick={closeConfirmationModal} className={s.env_button} to='/'>Fechar</Link>
             </div>
         </Modal>
         </>
