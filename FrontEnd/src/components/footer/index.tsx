@@ -1,5 +1,4 @@
 import styles from './styles.module.css';
-import { Link } from 'react-router-dom';
 import instagram from '../../assets/instagram.svg';
 import facebook from '../../assets/facebook.svg';
 import linkedin from '../../assets/linkedin.svg';
