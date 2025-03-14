@@ -1,0 +1,127 @@
+/* Card Principal */
+.cardContainer {
+    width: 12.75rem;
+    height: 25rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Ícones no topo */
+  .iconsContainer {
+    position: absolute;
+    top: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  
+  .iconButton {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  
+  .iconButton img.favoriteIcon {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+  }
+  
+  .iconPromo {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Imagem */
+  .imageContainer {
+    width: 100%;
+    height: 19rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .pijamaImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: auto;
+  }
+  
+  /* Retângulo azul */
+  .infoContainer {
+    height: 13.375rem;
+    padding: .3rem;
+    background-color: #97C3D8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 5.625rem;
+  }
+  
+  /* Conteúdo do retângulo azul */
+  
+  .pijamaName {
+    font-family: 'Numans', sans-serif;
+    font-size: .8rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: #3E677A;
+    margin-top: 1rem;
+  }
+  
+  .infoText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 5rem;
+  }
+  
+  .oldPrice {
+    font-family: 'Nunito Sans', sans-serif;
+    letter-spacing: 5%;
+    text-transform: uppercase;
+    text-decoration: line-through;
+    color: #B82935;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .currentPrice {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #274553;
+  
+  }
+
+  .carousel-container {
+    display: flex;
+    gap: 15px; /* Ajustado para melhorar a separação entre os cards */
+    justify-content: center;
+    overflow-x: auto; /* Permite rolar caso tenha mais itens */
+    scroll-snap-type: x mandatory;
+}
+
+  /* Não Apagar*/
+  
+  .noPromo p {
+    display: none;
+  }
