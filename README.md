@@ -1,3 +1,6 @@
+Projeto final do período de Trainee da IN Junior, empresa junior de computação da UFF. Projeto consiste no desenvolvimento de um e-commerce de pijamas utilizando a biblioteca React.Js e Node.js
+
+
 Participantes do Grupo 1
 
 - Ana Laura Neuhaus Vega
